@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pay Comedy Club — Robot de trading automatisé gratuit</title>
+  <meta name="description" content="Le robot de trading utilisé par 870+ Français. 100% gratuit, automatisé, tu gardes le contrôle. Installation en 10 minutes.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pay Comedy Club — Robot de trading automatisé gratuit">
+  <meta property="og:description" content="Le robot de trading utilisé par 870+ Français. 100% gratuit, automatisé, tu gardes le contrôle. Installation en 10 minutes.">
+  <!-- TODO: remplacer par l'URL absolue de production de l'OG image (export JPG 1200x630 depuis assets/og-image.svg) -->
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pay Comedy Club — Robot de trading automatisé gratuit">
+  <meta name="twitter:description" content="Le robot de trading utilisé par 870+ Français. 100% gratuit, automatisé, tu gardes le contrôle.">
+  <meta name="twitter:image" content="assets/og-image.jpg">
+
+  <!-- Fonts: preconnect + non-blocking load -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"></noscript>
+
+  <!-- Tabler icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo-pcc.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============ SECTION 1 : HERO ============ -->
+  <header class="hero" id="hero">
+    <!-- animated background -->
+    <div class="hero__bg" aria-hidden="true">
+      <svg class="hero__grid" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+        <!-- gradient pulsant -->
+        <defs>
+          <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00C2FF;stop-opacity:0.1"/>
+            <stop offset="50%" style="stop-color:#0A1628;stop-opacity:0"/>
+            <stop offset="100%" style="stop-color:#00C896;stop-opacity:0.08"/>
+          </linearGradient>
+          <filter id="heroGlow">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <rect width="1200" height="800" fill="url(#heroGradient)"/>
+        <!-- floating orbs / nodes -->
+        <circle class="hero__orb hero__orb--1" cx="200" cy="150" r="80" fill="none" stroke="#00C2FF" stroke-width="2" opacity="0.15"/>
+        <circle class="hero__orb hero__orb--2" cx="1000" cy="600" r="120" fill="none" stroke="#00C896" stroke-width="2" opacity="0.12"/>
+        <circle class="hero__orb hero__orb--3" cx="600" cy="50" r="100" fill="none" stroke="#00C2FF" stroke-width="1.5" opacity="0.1"/>
+        <!-- animated lines -->
+        <g class="hero__lines" stroke="#00C2FF" stroke-width="1.5" opacity="0.2">
+          <line class="hero__line hero__line--1" x1="0" y1="200" x2="1200" y2="200"/>
+          <line class="hero__line hero__line--2" x1="0" y1="400" x2="1200" y2="400"/>
+          <line class="hero__line hero__line--3" x1="0" y1="600" x2="1200" y2="600"/>
+          <line class="hero__line hero__line--4" x1="300" y1="0" x2="300" y2="800"/>
+          <line class="hero__line hero__line--5" x1="600" y1="0" x2="600" y2="800"/>
+          <line class="hero__line hero__line--6" x1="900" y1="0" x2="900" y2="800"/>
+        </g>
+        <!-- pulses -->
+        <g class="hero__pulses">
+          <circle class="hero__pulse hero__pulse--1" cx="150" cy="300" r="20" fill="none" stroke="#00C2FF" stroke-width="2" opacity="0.3"/>
+          <circle class="hero__pulse hero__pulse--2" cx="1050" cy="400" r="15" fill="none" stroke="#00C896" stroke-width="1.5" opacity="0.3"/>
+          <circle class="hero__pulse hero__pulse--3" cx="600" cy="700" r="25" fill="none" stroke="#00C2FF" stroke-width="2" opacity="0.2"/>
+        </g>
+      </svg>
+    </div>
+    <div class="container hero__inner">
+      <!-- TODO: remplacer assets/logo-pcc.svg par le logo PNG fourni (logo-pcc.png) -->
+      <img class="hero__logo" src="assets/logo-pcc.svg" alt="Pay Comedy Club" width="160" height="70" fetchpriority="high">
+
+      <h1 class="hero__title">Le robot de trading 100% gratuit utilisé par 870+ Français</h1>
+      <p class="hero__sub">10 minutes pour l'installer. Pas de connaissances requises. Tu gardes le contrôle de ton compte à 100%.</p>
+
+      <a href="#formulaire" class="btn btn--primary btn--lg js-scroll">Voir si je peux rejoindre</a>
+
+      <ul class="hero__proof">
+        <li><i class="ti ti-check" aria-hidden="true"></i> 100% gratuit et automatisé</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i> Tu peux arrêter à tout moment</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i> Track record public depuis 18 mois</li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ SECTION 2 : LE PROBLÈME ============ -->
+    <section class="section" id="probleme">
+      <svg class="section-bot" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="14" y="16" width="52" height="42" rx="12" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
+        <rect x="20" y="22" width="40" height="28" rx="8" fill="#0A1628"/>
+        <circle cx="32" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
+        <circle cx="48" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
+        <circle cx="32" cy="36" r="3" fill="#00C2FF"/>
+        <circle cx="48" cy="36" r="3" fill="#00C2FF"/>
+        <rect x="20" y="58" width="40" height="24" rx="8" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
+        <circle cx="40" cy="70" r="4" fill="#00C896"/>
+        <line x1="14" y1="65" x2="6" y2="60" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="4" cy="58" r="3" fill="#00C2FF"/>
+      </svg>
+      <div class="container">
+        <h2 class="section__title">Tu te reconnais dans une de ces situations ?</h2>
+        <div class="grid grid--3">
+          <article class="card">
+            <i class="ti ti-trending-down card__icon" aria-hidden="true"></i>
+            <h3 class="card__title">Tu as cramé un compte</h3>
+            <p class="card__text">Tu as testé des stratégies ou suivi des signaux qui ont vidé ton capital.</p>
+          </article>
+          <article class="card">
+            <i class="ti ti-clock card__icon" aria-hidden="true"></i>
+            <h3 class="card__title">Tu n'as pas le temps</h3>
+            <p class="card__text">Tu ne peux pas passer ta journée devant les graphiques pour gérer tes positions.</p>
+          </article>
+          <article class="card">
+            <i class="ti ti-shield-question card__icon" aria-hidden="true"></i>
+            <h3 class="card__title">Tu ne sais pas qui croire</h3>
+            <p class="card__text">Le milieu du trading est saturé de gourous, de coachings à 2000€ et de promesses douteuses.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 3 : COMMENT ÇA MARCHE (VIDEO) ============ -->
+    <section class="section section--alt" id="comment">
+      <div class="container">
+        <h2 class="section__title">Comment ça marche</h2>
+        <!-- TODO: remplacer par la vraie vidéo (MP4, WebM) ou embed YouTube -->
+        <div class="video-placeholder">
+          <div class="video-placeholder__inner">
+            <i class="ti ti-player-play" aria-hidden="true"></i>
+            <p>Vidéo — Comment ça marche en 3 étapes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 4 : PREUVES & RÉSULTATS ============ -->
+    <section class="section" id="preuves">
+      <svg class="section-bot" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="14" y="16" width="52" height="42" rx="12" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
+        <rect x="20" y="22" width="40" height="28" rx="8" fill="#0A1628"/>
+        <circle cx="32" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
+        <circle cx="48" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
+        <circle cx="32" cy="36" r="3" fill="#00C2FF"/>
+        <circle cx="48" cy="36" r="3" fill="#00C2FF"/>
+        <rect x="20" y="58" width="40" height="24" rx="8" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
+        <circle cx="40" cy="70" r="4" fill="#00C896"/>
+        <line x1="14" y1="65" x2="6" y2="60" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="4" cy="58" r="3" fill="#00C2FF"/>
+      </svg>
+      <div class="container">
+        <h2 class="section__title">Les résultats partagés par notre communauté</h2>
+        <p class="section__sub">On partage tous les jours : les bons jours ET les mauvais. Aucun cherry-picking.</p>
+        <div class="grid grid--2 proofs">
+          <!-- TODO: remplacer ces placeholders par les captures écran réelles des membres (WebP + fallback) -->
+          <figure class="proof"><div class="proof__ph">Capture résultat #1</div></figure>
+          <figure class="proof"><div class="proof__ph">Capture résultat #2</div></figure>
+          <figure class="proof"><div class="proof__ph">Capture résultat #3</div></figure>
+          <figure class="proof">
+            <div class="proof__ph">Notre compte de test : de 10 000€ à 100 000€ en 18 mois</div>
+          </figure>
+        </div>
+        <p class="proofs__link">
+          <!-- TODO: remplacer # par l'URL publique du compte MyFxBook -->
+          <a href="#" target="_blank" rel="noopener">→ Voir le track record complet et public sur MyFxBook</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 5 : POUR QUI / PAS POUR QUI ============ -->
+    <section class="section section--alt" id="pour-qui">
+      <svg class="section-bot section-bot--right" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="14" y="16" width="52" height="42" rx="12" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
+        <rect x="20" y="22" width="40" height="28" rx="8" fill="#0A1628"/>
+        <circle cx="32" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
+        <circle cx="48" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
+        <circle cx="32" cy="36" r="3" fill="#00C2FF"/>
+        <circle cx="48" cy="36" r="3" fill="#00C2FF"/>
+        <rect x="20" y="58" width="40" height="24" rx="8" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
+        <circle cx="40" cy="70" r="4" fill="#00C896"/>
+        <line x1="14" y1="65" x2="6" y2="60" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="4" cy="58" r="3" fill="#00C2FF"/>
+      </svg>
+      <div class="container">
+        <h2 class="section__title">Pour qui c'est fait (et pour qui ça ne l'est pas)</h2>
+        <div class="grid grid--2 fit">
+          <div class="fit__col fit__col--yes">
+            <h3 class="fit__heading">C'est pour toi si :</h3>
+            <ul class="fit__list">
+              <li><i class="ti ti-circle-check" aria-hidden="true"></i> Tu as au moins 440€ que tu peux allouer au trading</li>
+              <li><i class="ti ti-circle-check" aria-hidden="true"></i> Tu cherches un complément de revenu, pas un raccourci vers la richesse</li>
+              <li><i class="ti ti-circle-check" aria-hidden="true"></i> Tu préfères automatiser plutôt qu'apprendre à trader manuellement</li>
+              <li><i class="ti ti-circle-check" aria-hidden="true"></i> Tu vis en France et tu peux ouvrir un compte broker</li>
+            </ul>
+          </div>
+          <div class="fit__col fit__col--no">
+            <h3 class="fit__heading">Ce n'est pas pour toi si :</h3>
+            <ul class="fit__list">
+              <li><i class="ti ti-circle-x" aria-hidden="true"></i> Tu cherches à doubler ton capital en quelques semaines</li>
+              <li><i class="ti ti-circle-x" aria-hidden="true"></i> Tu n'as pas de capital disponible (ne mets pas d'argent emprunté)</li>
+              <li><i class="ti ti-circle-x" aria-hidden="true"></i> Tu veux apprendre à trader par toi-même</li>
+              <li><i class="ti ti-circle-x" aria-hidden="true"></i> Tu cherches un coaching gourou à 2000€ — ce n'est pas notre offre</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 6 : FAQ ============ -->
+    <section class="section" id="faq">
+      <svg class="section-bot" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="14" y="16" width="52" height="42" rx="12" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
+        <rect x="20" y="22" width="40" height="28" rx="8" fill="#0A1628"/>
+        <circle cx="32" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
+        <circle cx="48" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
+        <circle cx="32" cy="36" r="3" fill="#00C2FF"/>
+        <circle cx="48" cy="36" r="3" fill="#00C2FF"/>
+        <rect x="20" y="58" width="40" height="24" rx="8" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
+        <circle cx="40" cy="70" r="4" fill="#00C896"/>
+        <line x1="14" y1="65" x2="6" y2="60" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="4" cy="58" r="3" fill="#00C2FF"/>
+      </svg>
+      <div class="container container--narrow">
+        <h2 class="section__title">Les questions qu'on nous pose tous les jours</h2>
+        <div class="faq">
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false">
+              <span>Comment ça peut être gratuit ?</span>
+              <i class="ti ti-chevron-down faq__chevron" aria-hidden="true"></i>
+            </button>
+            <div class="faq__a"><p>Notre broker partenaire nous paye une commission sur les volumes tradés par les membres. Plus la communauté trade, plus on est rémunérés. Donc on est totalement aligné : on veut que tu réussisses et que tu trades longtemps. Aucun frais pour toi, ni à l'inscription ni en récurrent.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false">
+              <span>Quel est le risque pour mon argent ?</span>
+              <i class="ti ti-chevron-down faq__chevron" aria-hidden="true"></i>
+            </button>
+            <div class="faq__a"><p>Le trading comporte un risque de perte en capital, comme tout placement spéculatif. Le robot suit une stratégie qu'on a backtestée et testée 18 mois en live, mais aucun système ne peut garantir un gain. Tu gardes le contrôle total : tu peux désactiver le robot à tout moment, retirer ton capital quand tu veux, ton compte broker est à ton nom.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false">
+              <span>Quel montant minimum recommandé ?</span>
+              <i class="ti ti-chevron-down faq__chevron" aria-hidden="true"></i>
+            </button>
+            <div class="faq__a"><p>Le minimum pour démarrer est de 440€, et c'est toi qui déposes ce capital directement sur ton compte — on n'y a jamais accès. On recommande plutôt 500€+ pour que les gains soient significatifs. Avec 1000-2000€, tu commences à voir des résultats intéressants. Au-delà, c'est proportionnel.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false">
+              <span>Est-ce que c'est légal ?</span>
+              <i class="ti ti-chevron-down faq__chevron" aria-hidden="true"></i>
+            </button>
+            <div class="faq__a"><p>Oui. Tu ouvres un compte personnel chez un broker régulé, et tu y connectes un outil de trading automatisé (légalement appelé un EA, Expert Advisor). C'est une pratique répandue et autorisée. Tu restes propriétaire à 100% de ton compte et de ton capital.</p></div>
+          </div>
+          <div class="faq__item">
+            <button class="faq__q" aria-expanded="false">
+              <span>Quand est-ce que je vois les premiers résultats ?</span>
+              <i class="ti ti-chevron-down faq__chevron" aria-hidden="true"></i>
+            </button>
+            <div class="faq__a"><p>Les premiers trades arrivent dès le jour de l'activation, du lundi au vendredi. Pour évaluer la performance moyenne du robot dans des conditions normales, compte 4 à 6 semaines. Comme tout système de trading, il y a des semaines positives et des semaines négatives — on regarde la tendance sur la durée.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 7 : FORMULAIRE MULTI-ÉTAPES ============ -->
+    <section class="section section--alt" id="formulaire">
+      <svg class="section-bot section-bot--right" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="14" y="16" width="52" height="42" rx="12" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
+        <rect x="20" y="22" width="40" height="28" rx="8" fill="#0A1628"/>
+        <circle cx="32" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
+        <circle cx="48" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
+        <circle cx="32" cy="36" r="3" fill="#00C2FF"/>
+        <circle cx="48" cy="36" r="3" fill="#00C2FF"/>
+        <rect x="20" y="58" width="40" height="24" rx="8" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
+        <circle cx="40" cy="70" r="4" fill="#00C896"/>
+        <line x1="14" y1="65" x2="6" y2="60" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="4" cy="58" r="3" fill="#00C2FF"/>
+      </svg>
+      <div class="container container--narrow">
+        <h2 class="section__title">Vois si tu peux rejoindre</h2>
+
+        <div class="formcard">
+          <!-- Progress -->
+          <div class="progress" aria-hidden="true">
+            <div class="progress__bar"><span class="progress__fill" id="progressFill"></span></div>
+            <span class="progress__label" id="progressLabel">Étape 1 / 3</span>
+          </div>
+
+          <form id="leadForm" novalidate>
+            <!-- STEP 1 -->
+            <fieldset class="step is-active" data-step="1">
+              <legend class="step__q">Quel montant peux-tu allouer au trading ?</legend>
+              <p class="step__hint">Minimum 440€ pour démarrer (c'est toi qui déposes). On recommande 500€+ pour des résultats significatifs.</p>
+              <div class="radios" role="radiogroup" aria-label="Montant">
+                <label class="radio"><input type="radio" name="montant" value="Moins de 440€" required><span>Moins de 440€</span></label>
+                <label class="radio"><input type="radio" name="montant" value="Entre 440€ et 800€"><span>Entre 440€ et 800€</span></label>
+                <label class="radio"><input type="radio" name="montant" value="Entre 800€ et 1500€"><span>Entre 800€ et 1500€</span></label>
+                <label class="radio"><input type="radio" name="montant" value="Plus de 1500€"><span>Plus de 1500€</span></label>
+              </div>
+              <p class="field-error" data-error-for="step1" hidden><i class="ti ti-alert-circle" aria-hidden="true"></i> Sélectionne une option pour continuer.</p>
+              <div class="step__nav">
+                <button type="button" class="btn btn--primary js-next">Suivant</button>
+              </div>
+            </fieldset>
+
+            <!-- STEP 2 -->
+            <fieldset class="step" data-step="2">
+              <legend class="step__q">Quelle est ton expérience en trading ?</legend>
+              <div class="radios" role="radiogroup" aria-label="Expérience">
+                <label class="radio"><input type="radio" name="experience" value="Débutant, je n'ai jamais tradé" required><span>Débutant, je n'ai jamais tradé</span></label>
+                <label class="radio"><input type="radio" name="experience" value="J'ai déjà essayé mais j'ai cramé un compte"><span>J'ai déjà essayé mais j'ai cramé un compte</span></label>
+                <label class="radio"><input type="radio" name="experience" value="Je trade régulièrement"><span>Je trade régulièrement</span></label>
+                <label class="radio"><input type="radio" name="experience" value="Je suis expérimenté"><span>Je suis expérimenté</span></label>
+              </div>
+
+              <p class="step__q step__q--inline">Quel est ton objectif principal ?</p>
+              <div class="radios" role="radiogroup" aria-label="Objectif">
+                <label class="radio"><input type="radio" name="objectif" value="Compléter mes revenus" required><span>Compléter mes revenus</span></label>
+                <label class="radio"><input type="radio" name="objectif" value="Remplacer mon salaire à terme"><span>Remplacer mon salaire à terme</span></label>
+                <label class="radio"><input type="radio" name="objectif" value="Faire fructifier une épargne"><span>Faire fructifier une épargne</span></label>
+                <label class="radio"><input type="radio" name="objectif" value="Juste curieux d'essayer"><span>Juste curieux d'essayer</span></label>
+              </div>
+              <p class="field-error" data-error-for="step2" hidden><i class="ti ti-alert-circle" aria-hidden="true"></i> Réponds aux deux questions pour continuer.</p>
+              <div class="step__nav">
+                <button type="button" class="btn btn--ghost js-prev">Précédent</button>
+                <button type="button" class="btn btn--primary js-next">Suivant</button>
+              </div>
+            </fieldset>
+
+            <!-- STEP 3 -->
+            <fieldset class="step" data-step="3">
+              <legend class="step__q">Tes coordonnées</legend>
+              <div class="field">
+                <label for="prenom">Prénom</label>
+                <input type="text" id="prenom" name="prenom" autocomplete="given-name" required>
+              </div>
+              <div class="field">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" autocomplete="family-name" required>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required>
+              </div>
+              <div class="field">
+                <label for="telephone">Numéro de téléphone</label>
+                <input type="tel" id="telephone" name="telephone" autocomplete="tel" inputmode="tel" placeholder="06 12 34 56 78" required>
+              </div>
+              <label class="checkbox"><input type="checkbox" name="consent_contact" required><span>J'accepte d'être recontacté par téléphone ou WhatsApp</span></label>
+              <label class="checkbox"><input type="checkbox" name="consent_risque" required><span>J'ai compris que le trading comporte un risque de perte en capital</span></label>
+
+              <p class="field-error" data-error-for="step3" hidden><i class="ti ti-alert-circle" aria-hidden="true"></i> <span class="field-error__msg">Remplis tous les champs et coche les deux cases.</span></p>
+              <div class="step__nav">
+                <button type="button" class="btn btn--ghost js-prev">Précédent</button>
+                <button type="submit" class="btn btn--primary js-submit">Envoyer ma candidature</button>
+              </div>
+            </fieldset>
+          </form>
+
+          <!-- SUCCESS -->
+          <div class="success" id="successScreen" hidden>
+            <i class="ti ti-circle-check success__icon" aria-hidden="true"></i>
+            <h3 class="success__title">Reçu !</h3>
+            <p class="success__msg" id="successMsg">On te recontacte sous 24h ouvrées.</p>
+            <!-- TODO: remplacer # par le lien Telegram de la communauté -->
+            <a href="#" target="_blank" rel="noopener" class="btn btn--ghost" id="successTelegram">
+              <i class="ti ti-brand-telegram" aria-hidden="true"></i> Rejoindre le Telegram
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ SECTION 8 : FOOTER / MENTIONS LÉGALES ============ -->
+  <footer class="footer">
+    <div class="container container--narrow footer__inner">
+      <img class="footer__logo" src="assets/logo-pcc.svg" alt="Pay Comedy Club" width="120" height="52" loading="lazy">
+      <p class="footer__brand">Pay Comedy Club</p>
+      <div class="footer__social">
+        <a href="https://www.tiktok.com/@playcomedyclub" target="_blank" rel="noopener" aria-label="TikTok Pay Comedy Club">
+          <i class="ti ti-brand-tiktok" aria-hidden="true"></i> @playcomedyclub
+        </a>
+      </div>
+      <nav class="footer__links">
+        <a href="mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span>
+        <a href="politique-confidentialite.html">Politique de confidentialité</a><span aria-hidden="true">·</span>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <p class="footer__copy">© 2026 Pay Comedy Club</p>
+    </div>
+  </footer>
+
+
+  <!-- ============ SECTION 9 : STICKY CTA MOBILE ============ -->
+  <a href="#formulaire" class="sticky-cta js-scroll" id="stickyCta" hidden>Voir si je peux rejoindre →</a>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
