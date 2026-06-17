@@ -1,0 +1,534 @@
+/* ============================================================================
+   PCC LANDING PAGE — PREMIUM VISUAL ENHANCEMENTS
+   À inclure APRÈS styles.css dans index.html
+   ============================================================================ */
+
+/* ---------------------------------------------------------------------------
+   1. EXTENDED PALETTE — ADD GOLD ACCENT
+   --------------------------------------------------------------------------- */
+:root {
+  --gold: #FFD700;
+  --gold-dim: #B8860B;
+  --gold-soft: #FFE066;
+  --gold-glow: rgba(255, 215, 0, 0.35);
+  --cyan-glow: rgba(0, 194, 255, 0.35);
+  --gradient-cyan-gold: linear-gradient(135deg, #00C2FF 0%, #FFD700 100%);
+  --gradient-gold-cyan: linear-gradient(135deg, #FFD700 0%, #00C2FF 100%);
+}
+
+/* ---------------------------------------------------------------------------
+   2. BACKGROUND GLOBAL — GRID PATTERN + ORBS
+   --------------------------------------------------------------------------- */
+body {
+  position: relative;
+  background-color: #0A1628;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(0, 194, 255, 0.10) 0%, transparent 45%),
+    radial-gradient(circle at 85% 60%, rgba(255, 215, 0, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(0, 194, 255, 0.05) 0%, transparent 50%),
+    linear-gradient(rgba(0, 194, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 194, 255, 0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+}
+
+/* Ensure all content sits ABOVE the background pattern */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------------------------------------------------------------------------
+   3. GLASSMORPHISM ON CARDS (multiple selector fallbacks)
+   --------------------------------------------------------------------------- */
+[class*="card"]:not([class*="cards"]),
+[class*="feature"],
+[class*="principle"],
+[class*="benefit"],
+[class*="vs-"],
+.faq-item,
+[class*="stat-card"],
+[class*="comparison"] > div {
+  background: rgba(20, 41, 68, 0.45) !important;
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(0, 194, 255, 0.12) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 10px 40px rgba(0, 0, 0, 0.25) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[class*="card"]:not([class*="cards"]):hover,
+[class*="feature"]:hover,
+[class*="principle"]:hover,
+[class*="benefit"]:hover {
+  transform: translateY(-6px) !important;
+  border-color: rgba(0, 194, 255, 0.45) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    0 20px 50px rgba(0, 194, 255, 0.18),
+    0 0 40px rgba(0, 194, 255, 0.12) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   4. CTA BUTTONS — GRADIENT + SHIMMER + GLOW
+   --------------------------------------------------------------------------- */
+a[class*="cta"],
+button[class*="cta"],
+a[href*="t.me"],
+[class*="telegram-btn"],
+[class*="btn-primary"],
+[class*="join-"] {
+  position: relative !important;
+  overflow: hidden !important;
+  background: var(--gradient-cyan-gold) !important;
+  background-size: 200% 200% !important;
+  animation: gradient-shift 4s ease infinite !important;
+  border: none !important;
+  box-shadow:
+    0 4px 20px rgba(0, 194, 255, 0.4),
+    0 0 50px rgba(0, 194, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  transform: translateZ(0);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  color: #0A1628 !important;
+  font-weight: 700 !important;
+}
+
+a[class*="cta"]:hover,
+button[class*="cta"]:hover,
+a[href*="t.me"]:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow:
+    0 10px 30px rgba(255, 215, 0, 0.5),
+    0 0 60px rgba(0, 194, 255, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+a[class*="cta"]::before,
+button[class*="cta"]::before,
+a[href*="t.me"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  60%, 100% { left: 200%; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ---------------------------------------------------------------------------
+   5. STAT NUMBERS — GOLD GRADIENT TEXT
+   --------------------------------------------------------------------------- */
+[class*="stat"] strong,
+[class*="stat-number"],
+[class*="big-number"],
+[class*="stat"] [class*="number"],
+[class*="counter"],
+[class*="count"] {
+  background: var(--gradient-cyan-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(0, 194, 255, 0.4));
+  font-weight: 800 !important;
+}
+
+/* ---------------------------------------------------------------------------
+   6. HERO ENHANCEMENT — GRADIENT MESH + ORBS
+   --------------------------------------------------------------------------- */
+.hero,
+[class*="hero"],
+section:first-of-type,
+header + section,
+main > section:first-child {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before,
+[class*="hero"]:first-of-type::before,
+section:first-of-type::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -15%;
+  width: 60%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 194, 255, 0.18) 0%, transparent 55%);
+  pointer-events: none;
+  animation: float-orb-1 22s ease-in-out infinite;
+  z-index: 0;
+}
+
+.hero::after,
+[class*="hero"]:first-of-type::after,
+section:first-of-type::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: -15%;
+  width: 55%;
+  height: 90%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.10) 0%, transparent 55%);
+  pointer-events: none;
+  animation: float-orb-2 28s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes float-orb-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.1); }
+  66% { transform: translate(-30px, 40px) scale(0.95); }
+}
+
+@keyframes float-orb-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, -30px) scale(1.15); }
+}
+
+/* Make sure hero CONTENT stays above the orbs */
+.hero > *,
+[class*="hero"]:first-of-type > *,
+section:first-of-type > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------------------------------------------------------------------------
+   7. PARTICLES (gold + cyan floating)
+   --------------------------------------------------------------------------- */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particle-float 18s linear infinite;
+  box-shadow: 0 0 12px var(--gold);
+}
+
+.particle.cyan {
+  background: #00C2FF;
+  box-shadow: 0 0 12px #00C2FF;
+}
+
+.particle.large {
+  width: 6px;
+  height: 6px;
+}
+
+@keyframes particle-float {
+  0% {
+    opacity: 0;
+    transform: translateY(110vh) translateX(0) scale(0.5);
+  }
+  10% {
+    opacity: 0.7;
+    transform: translateY(90vh) translateX(20px) scale(1);
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-150px) translateX(120px) scale(0.5);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   8. SCROLL FADE-IN ANIMATIONS
+   --------------------------------------------------------------------------- */
+section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+section.visible,
+section:first-of-type,
+.hero {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger child elements within visible sections */
+section.visible [class*="card"],
+section.visible [class*="feature"],
+section.visible [class*="principle"] {
+  animation: slide-up-fade 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+section.visible [class*="card"]:nth-child(1),
+section.visible [class*="feature"]:nth-child(1) { animation-delay: 0.1s; }
+section.visible [class*="card"]:nth-child(2),
+section.visible [class*="feature"]:nth-child(2) { animation-delay: 0.2s; }
+section.visible [class*="card"]:nth-child(3),
+section.visible [class*="feature"]:nth-child(3) { animation-delay: 0.3s; }
+section.visible [class*="card"]:nth-child(4),
+section.visible [class*="feature"]:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   9. TESTIMONIAL SCREENSHOTS — ROTATION + GLOW
+   --------------------------------------------------------------------------- */
+[class*="testimonial"] img,
+[class*="results"] img,
+[class*="reviews"] img {
+  border-radius: 24px;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(0, 194, 255, 0.12);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Apply alternating rotations to testimonial images */
+[class*="testimonial"]:nth-child(1) img,
+[class*="results"] > div:nth-child(1) img { transform: rotate(-3deg); }
+[class*="testimonial"]:nth-child(2) img,
+[class*="results"] > div:nth-child(2) img { transform: rotate(2deg); }
+[class*="testimonial"]:nth-child(3) img,
+[class*="results"] > div:nth-child(3) img { transform: rotate(-1deg); }
+[class*="testimonial"]:nth-child(4) img,
+[class*="results"] > div:nth-child(4) img { transform: rotate(3deg); }
+
+[class*="testimonial"]:hover img,
+[class*="results"] > div:hover img {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(0, 194, 255, 0.3);
+}
+
+/* ---------------------------------------------------------------------------
+   10. SECTION DIVIDERS — SUBTLE CYAN LINE
+   --------------------------------------------------------------------------- */
+section + section {
+  position: relative;
+}
+
+section + section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 194, 255, 0.3) 50%,
+    transparent 100%
+  );
+  z-index: 2;
+}
+
+/* ---------------------------------------------------------------------------
+   11. AI ACTIVE BADGE — overlay on hero video
+   --------------------------------------------------------------------------- */
+.ai-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(10, 22, 40, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 194, 255, 0.5);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #00C2FF;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  z-index: 10;
+  box-shadow: 0 0 30px rgba(0, 194, 255, 0.25);
+  animation: badge-pulse 3s infinite;
+}
+
+.ai-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #00E5A0;
+  border-radius: 50%;
+  animation: dot-pulse 2s infinite;
+  box-shadow: 0 0 12px #00E5A0;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(0, 194, 255, 0.25); }
+  50% { box-shadow: 0 0 50px rgba(0, 194, 255, 0.45); }
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+
+/* ---------------------------------------------------------------------------
+   12. ROBOT ICON STYLING
+   --------------------------------------------------------------------------- */
+.robot-icon {
+  width: 90px;
+  height: 90px;
+  filter: drop-shadow(0 0 20px rgba(0, 194, 255, 0.5));
+  animation: robot-pulse 3s ease-in-out infinite;
+}
+
+@keyframes robot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px rgba(0, 194, 255, 0.4));
+  }
+  50% {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 35px rgba(0, 194, 255, 0.7));
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   13. SCARCITY BAR — ENHANCEMENT
+   --------------------------------------------------------------------------- */
+[class*="scarcity"],
+[class*="places"] {
+  background: linear-gradient(
+    90deg,
+    rgba(20, 41, 68, 0.8) 0%,
+    rgba(20, 41, 68, 0.95) 50%,
+    rgba(20, 41, 68, 0.8) 100%
+  ) !important;
+  backdrop-filter: blur(15px);
+  border-top: 1px solid rgba(255, 215, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+[class*="scarcity"] [class*="number"],
+[class*="places"] [class*="number"],
+[class*="counter"] {
+  color: var(--gold) !important;
+  filter: drop-shadow(0 0 15px var(--gold-glow));
+}
+
+/* ---------------------------------------------------------------------------
+   14. LIFESTYLE GALLERY — POLISH
+   --------------------------------------------------------------------------- */
+[class*="lifestyle"] img,
+[class*="gallery"] img {
+  border-radius: 16px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[class*="lifestyle"] img:hover,
+[class*="gallery"] img:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    0 0 50px rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.4);
+}
+
+/* ---------------------------------------------------------------------------
+   15. ACCESSIBILITY — REDUCED MOTION
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  section {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   16. MOBILE OPTIMIZATIONS
+   --------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  body::before {
+    background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  }
+
+  .hero::before,
+  [class*="hero"]:first-of-type::before {
+    opacity: 0.6;
+  }
+
+  .hero::after,
+  [class*="hero"]:first-of-type::after {
+    opacity: 0.5;
+  }
+
+  .ai-badge {
+    top: 12px;
+    right: 12px;
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+
+  /* Reduce testimonial rotations on mobile */
+  [class*="testimonial"]:nth-child(n) img {
+    transform: rotate(0);
+  }
+}
