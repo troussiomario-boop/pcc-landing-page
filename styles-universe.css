@@ -1,24 +1,21 @@
 /* ============================================================================
-   PCC LANDING PAGE — VISUAL UNIVERSE (v2)
-   Hero BLINDE (force toutes les contraintes) + backgrounds coherents + mobile.
-   Charge en dernier. Selecteurs par ID + !important pour gagner a coup sur.
+   PCC LANDING PAGE — VISUAL UNIVERSE (v3)
+   Hero corrige (taille video, espace vide, robot) + backgrounds coherents + mobile.
    ============================================================================ */
 
-/* ---------------------------------------------------------------------------
-   0. SAFETY
-   --------------------------------------------------------------------------- */
-html, body {
-  overflow-x: hidden !important;
-  max-width: 100%;
-}
+/* ---- SAFETY ---- */
+html, body { overflow-x: hidden !important; max-width: 100%; }
 img { max-width: 100%; }
 
 /* ===========================================================================
-   1. HERO — LAYOUT BLINDE
+   1. HERO
+   La colonne droite est dimensionnee PILE a la taille de la video
+   (1fr | minmax(320px,440px)) => plus d'espace vide a droite.
    =========================================================================== */
 #hero {
   position: relative;
   overflow: hidden;
+  min-height: auto !important;
   background-color: #0A1628 !important;
   background-image:
     linear-gradient(135deg, rgba(10, 22, 40, 0.86) 0%, rgba(10, 22, 40, 0.74) 100%),
@@ -30,65 +27,62 @@ img { max-width: 100%; }
 
 #hero .container {
   display: grid !important;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr) !important;
-  gap: 44px !important;
+  grid-template-columns: 1fr minmax(320px, 440px) !important;
+  gap: 48px !important;
   align-items: center !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
 }
 
 #hero .hero__content {
   text-align: left !important;
   max-width: 100% !important;
-  width: auto !important;
   min-width: 0 !important;
-  flex: initial !important;
 }
 
 #hero .h-hero {
+  font-size: clamp(28px, 3.4vw, 46px) !important;
+  line-height: 1.12 !important;
   max-width: none !important;
-  width: auto !important;
-  font-size: clamp(30px, 4.2vw, 52px) !important;
-  line-height: 1.1 !important;
-  margin-bottom: 20px !important;
+  margin-bottom: 18px !important;
 }
 
 #hero .hero__subtitle {
-  max-width: 540px !important;
-  margin-bottom: 28px !important;
+  max-width: 520px !important;
+  margin: 18px 0 26px !important;
 }
 
+/* On FORCE l'affichage de la colonne video (styles.css la cache <1024px) */
 #hero .hero__visuals {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  max-width: 100% !important;
-  width: auto !important;
   min-width: 0 !important;
-  flex: initial !important;
 }
 
 #hero .hero__video {
   position: relative !important;
   width: 100% !important;
-  max-width: 340px !important;
+  max-width: 440px !important;
+  margin: 0 !important;
 }
 
 #hero .hero__video-element {
   width: 100% !important;
   height: auto !important;
   display: block !important;
-  border-radius: 24px !important;
+  border-radius: 22px !important;
   box-shadow:
     0 30px 60px rgba(0, 0, 0, 0.45),
     0 0 40px rgba(0, 194, 255, 0.18) !important;
 }
 
+/* Robot : petit, dans le coin bas-gauche, ne couvre PAS le visage */
 #hero .hero__robot {
   position: absolute !important;
+  left: -24px !important;
   bottom: -24px !important;
-  left: -54px !important;
-  width: 128px !important;
+  right: auto !important;
+  top: auto !important;
+  width: 92px !important;
   height: auto !important;
   z-index: 4 !important;
   pointer-events: none !important;
@@ -98,114 +92,83 @@ img { max-width: 100%; }
 
 @keyframes pcc-robot-float {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-14px); }
+  50%      { transform: translateY(-12px); }
 }
 
 /* ===========================================================================
-   2. SECTION BACKGROUNDS — COHERENTS
+   2. SECTION BACKGROUNDS — COHERENTS (gold uniquement au CTA final)
    =========================================================================== */
 #vs {
   background-color: #0A1628 !important;
   background-image:
     linear-gradient(rgba(10, 22, 40, 0.90), rgba(10, 22, 40, 0.92)),
     url('/assets/bg-trading.png') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
+  background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;
 }
-
 #why {
   background-color: #0A1628 !important;
   background-image:
     linear-gradient(rgba(10, 22, 40, 0.90), rgba(10, 22, 40, 0.92)),
     url('/assets/bg-ai-network.png') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
+  background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;
 }
-
 #for-who {
   background-color: #0A1628 !important;
   background-image:
     linear-gradient(rgba(10, 22, 40, 0.90), rgba(10, 22, 40, 0.93)),
     url('/assets/bg-trading.png') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
+  background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;
 }
-
 #final-cta {
   background-color: #0A1628 !important;
   background-image:
     linear-gradient(rgba(10, 22, 40, 0.74), rgba(10, 22, 40, 0.84)),
     url('/assets/bg-gold.png') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
+  background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;
 }
-
-/* #stats, #testimonials, #who : pas d'image -> restent dark (lisibilite) */
+/* #stats, #testimonials, #who : restent dark */
 
 /* ===========================================================================
-   3. TABLET (<=1024px)
+   3. TABLET / MOBILE (<=1023px) : on empile en 1 colonne
    =========================================================================== */
-@media (max-width: 1024px) {
-  #hero .container { gap: 32px !important; }
-  #hero .hero__robot { width: 108px !important; left: -38px !important; }
+@media (max-width: 1023px) {
+  #hero .container {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    text-align: center !important;
+    justify-items: center !important;
+  }
+  #hero .hero__content { text-align: center !important; }
+  #hero .hero__subtitle { margin-left: auto !important; margin-right: auto !important; }
+  #hero .hero__video { max-width: 360px !important; margin: 0 auto !important; }
 }
 
 /* ===========================================================================
    4. MOBILE (<=768px)
    =========================================================================== */
 @media (max-width: 768px) {
-
-  #hero .container {
-    grid-template-columns: 1fr !important;
-    gap: 26px !important;
-    text-align: center !important;
-  }
-  #hero .hero__content { text-align: center !important; }
   #hero .h-hero { font-size: clamp(26px, 7vw, 36px) !important; }
-  #hero .hero__subtitle { margin-left: auto !important; margin-right: auto !important; }
-  #hero .hero__video { max-width: 280px !important; margin: 0 auto !important; }
-  #hero .hero__robot { width: 72px !important; left: -6px !important; bottom: -10px !important; }
+  #hero .hero__video { max-width: 300px !important; }
+  #hero .hero__robot { width: 70px !important; left: -8px !important; bottom: -10px !important; }
 
-  #hero, #vs, #why, #for-who, #final-cta {
-    background-attachment: scroll !important;
-  }
+  #hero, #vs, #why, #for-who, #final-cta { background-attachment: scroll !important; }
 
   #vs .vs-grid,
   #why .why-grid,
   #for-who .for-who-grid,
   #who .who-grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
+    display: grid !important; grid-template-columns: 1fr !important; gap: 20px !important;
   }
-
   #stats .stats-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 14px !important;
+    display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 14px !important;
   }
-
   #testimonials .testimonials-grid {
-    display: flex !important;
-    overflow-x: auto !important;
-    gap: 16px !important;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 12px;
+    display: flex !important; overflow-x: auto !important; gap: 16px !important;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 12px;
   }
-  #testimonials .testimonial-card {
-    flex: 0 0 78% !important;
-    scroll-snap-align: center;
-  }
-
+  #testimonials .testimonial-card { flex: 0 0 78% !important; scroll-snap-align: center; }
   #who .gallery-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 8px !important;
+    display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important;
   }
 }
 
@@ -214,12 +177,10 @@ img { max-width: 100%; }
    =========================================================================== */
 @media (max-width: 400px) {
   #stats .stats-grid { grid-template-columns: 1fr !important; }
-  #hero .hero__robot { width: 62px !important; }
+  #hero .hero__robot { width: 60px !important; }
 }
 
-/* ===========================================================================
-   6. REDUCED MOTION
-   =========================================================================== */
+/* ---- REDUCED MOTION ---- */
 @media (prefers-reduced-motion: reduce) {
   #hero .hero__robot { animation: none !important; }
 }
