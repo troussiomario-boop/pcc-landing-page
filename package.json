@@ -1,0 +1,22 @@
+{
+  "name": "play-comedy-club-lp",
+  "version": "1.0.0",
+  "description": "Play Comedy Club — Landing Page Funnel Telegram",
+  "main": "index.html",
+  "scripts": {
+    "build:og": "node scripts/generate-og-image.js",
+    "prebuild": "npm run build:og",
+    "dev": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "trading",
+    "robot",
+    "telegram",
+    "fintech"
+  ],
+  "author": "Play Comedy Club",
+  "license": "MIT",
+  "devDependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}

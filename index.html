@@ -3,412 +3,481 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rejoins le canal Telegram et branche le robot qui trade automatiquement sur l'or. Aucune compétence requise. 10 minutes pour démarrer.">
 
-  <title>Play Comedy Club — Robot de trading automatisé gratuit</title>
-  <meta name="description" content="Le robot de trading utilisé par 870+ Français. 100% gratuit, automatisé, tu gardes le contrôle. Installation en 10 minutes.">
+  <title>Play Comedy Club — Le robot de trading 100% gratuit</title>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Play Comedy Club — Robot de trading automatisé gratuit">
-  <meta property="og:description" content="Le robot de trading utilisé par 870+ Français. 100% gratuit, automatisé, tu gardes le contrôle. Installation en 10 minutes.">
-  <!-- TODO: remplacer par l'URL absolue de production de l'OG image (export JPG 1200x630 depuis assets/og-image.svg) -->
-  <meta property="og:image" content="assets/og-image.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Le robot de trading 100% gratuit utilisé par 870+ Français" />
+  <meta property="og:description" content="Rejoins le canal Telegram et branche le robot qui trade automatiquement sur l'or. Aucune compétence requise. 10 minutes pour démarrer." />
+  <meta property="og:image" content="/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="/" />
+  <meta property="og:locale" content="fr_FR" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Play Comedy Club — Robot de trading automatisé gratuit">
-  <meta name="twitter:description" content="Le robot de trading utilisé par 870+ Français. 100% gratuit, automatisé, tu gardes le contrôle.">
-  <meta name="twitter:image" content="assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Le robot de trading 100% gratuit utilisé par 870+ Français" />
+  <meta name="twitter:description" content="Rejoins le canal Telegram et branche le robot automatisé sur l'or." />
+  <meta name="twitter:image" content="/assets/og-image.jpg" />
 
-  <!-- Fonts: preconnect + non-blocking load -->
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1695040618446094');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1695040618446094&ev=PageView&noscript=1"
+  /></noscript>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 
-  <!-- Tabler icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <!-- Lucide Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.css">
 
-  <link rel="icon" type="image/svg+xml" href="assets/logo-pcc.png">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/logo-pcc.png">
+  <link rel="apple-touch-icon" href="/assets/logo-pcc.png">
+
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- ============ SECTION 1 : HERO ============ -->
-  <header class="hero" id="hero">
-    <!-- animated background -->
-    <div class="hero__bg" aria-hidden="true">
-      <svg class="hero__grid" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-        <!-- gradient pulsant -->
-        <defs>
-          <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#00C2FF;stop-opacity:0.1"/>
-            <stop offset="50%" style="stop-color:#0A1628;stop-opacity:0"/>
-            <stop offset="100%" style="stop-color:#00C896;stop-opacity:0.08"/>
-          </linearGradient>
-          <filter id="heroGlow">
-            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-            <feMerge>
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-        </defs>
-        <rect width="1200" height="800" fill="url(#heroGradient)"/>
-        <!-- floating orbs / nodes -->
-        <circle class="hero__orb hero__orb--1" cx="200" cy="150" r="80" fill="none" stroke="#00C2FF" stroke-width="2" opacity="0.15"/>
-        <circle class="hero__orb hero__orb--2" cx="1000" cy="600" r="120" fill="none" stroke="#00C896" stroke-width="2" opacity="0.12"/>
-        <circle class="hero__orb hero__orb--3" cx="600" cy="50" r="100" fill="none" stroke="#00C2FF" stroke-width="1.5" opacity="0.1"/>
-        <!-- animated lines -->
-        <g class="hero__lines" stroke="#00C2FF" stroke-width="1.5" opacity="0.2">
-          <line class="hero__line hero__line--1" x1="0" y1="200" x2="1200" y2="200"/>
-          <line class="hero__line hero__line--2" x1="0" y1="400" x2="1200" y2="400"/>
-          <line class="hero__line hero__line--3" x1="0" y1="600" x2="1200" y2="600"/>
-          <line class="hero__line hero__line--4" x1="300" y1="0" x2="300" y2="800"/>
-          <line class="hero__line hero__line--5" x1="600" y1="0" x2="600" y2="800"/>
-          <line class="hero__line hero__line--6" x1="900" y1="0" x2="900" y2="800"/>
-        </g>
-        <!-- pulses -->
-        <g class="hero__pulses">
-          <circle class="hero__pulse hero__pulse--1" cx="150" cy="300" r="20" fill="none" stroke="#00C2FF" stroke-width="2" opacity="0.3"/>
-          <circle class="hero__pulse hero__pulse--2" cx="1050" cy="400" r="15" fill="none" stroke="#00C896" stroke-width="1.5" opacity="0.3"/>
-          <circle class="hero__pulse hero__pulse--3" cx="600" cy="700" r="25" fill="none" stroke="#00C2FF" stroke-width="2" opacity="0.2"/>
-        </g>
-      </svg>
+<!-- ============================================================
+     SECTION 1 — HERO
+     ============================================================ -->
+<section class="section hero" id="hero">
+  <div class="container">
+    <div class="hero__content">
+      <div class="hero__badge">
+        🎬 @playcomedyclub sur TikTok · 50K+ vues
+      </div>
+
+      <h1 class="h-hero">Le robot de trading 100% gratuit utilisé par 870+ Français</h1>
+
+      <p class="body-lg hero__subtitle">Rejoins le canal Telegram et branche le robot qui trade automatiquement sur l'or, du lundi au vendredi. Aucune compétence requise. 10 minutes pour démarrer.</p>
+
+      <button class="cta-primary cta-telegram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="1"/><path d="M5.64 5.64a9 9 0 0 1 12.72 0"/><path d="M2.64 8.64a13 13 0 0 1 18.72 0"/><path d="M8.64 2.64a17 17 0 0 1 6.72 0"/>
+        </svg>
+        Rejoindre le canal Telegram
+      </button>
+
+      <p class="caption hero__subtext">Gratuit · Aucune carte bancaire · Accès immédiat</p>
     </div>
-    <div class="container hero__inner">
-      <!-- TODO: remplacer assets/logo-pcc.png par le logo PNG fourni (logo-pcc.png) -->
-      <img class="hero__logo" src="assets/logo-pcc.png" alt="Play Comedy Club" width="160" height="70" fetchpriority="high">
 
-      <h1 class="hero__title">Le robot de trading 100% gratuit utilisé par 870+ Français</h1>
-      <p class="hero__sub">10 minutes pour l'installer. Pas de connaissances requises. Tu gardes le contrôle de ton compte à 100%.</p>
-
-      <a href="#formulaire" class="btn btn--primary btn--lg js-scroll">Voir si je peux rejoindre</a>
-
-      <ul class="hero__proof">
-        <li><i class="ti ti-check" aria-hidden="true"></i> 100% gratuit et automatisé</li>
-        <li><i class="ti ti-check" aria-hidden="true"></i> Tu peux arrêter à tout moment</li>
-        <li><i class="ti ti-check" aria-hidden="true"></i> Track record public depuis 18 mois</li>
-      </ul>
+    <div class="hero__visuals">
+      <!-- Placeholder testimonials carousel — images chargées via assets/testimonials/ -->
+      <div class="hero__carousel">
+        <img class="hero__carousel-img" src="/assets/testimonials/testimonial-1.png" alt="Témoignage 1" loading="lazy">
+        <img class="hero__carousel-img" src="/assets/testimonials/testimonial-2.png" alt="Témoignage 2" loading="lazy">
+        <img class="hero__carousel-img" src="/assets/testimonials/testimonial-3.png" alt="Témoignage 3" loading="lazy">
+      </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
-    <!-- ============ SECTION 2 : LE PROBLÈME ============ -->
-    <section class="section" id="probleme">
-      <svg class="section-bot" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="14" y="16" width="52" height="42" rx="12" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
-        <rect x="20" y="22" width="40" height="28" rx="8" fill="#0A1628"/>
-        <circle cx="32" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
-        <circle cx="48" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
-        <circle cx="32" cy="36" r="3" fill="#00C2FF"/>
-        <circle cx="48" cy="36" r="3" fill="#00C2FF"/>
-        <rect x="20" y="58" width="40" height="24" rx="8" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
-        <circle cx="40" cy="70" r="4" fill="#00C896"/>
-        <line x1="14" y1="65" x2="6" y2="60" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="4" cy="58" r="3" fill="#00C2FF"/>
+<!-- ============================================================
+     SECTION 2 — VS COMPARATIVE
+     ============================================================ -->
+<section class="section vs-comparative" id="vs">
+  <div class="container">
+    <h2 class="h-section">Pourquoi le robot PCC, et pas tout le reste ?</h2>
+
+    <div class="vs-grid">
+      <div class="vs-card vs-card--without">
+        <h3 class="vs-card__heading">SANS PCC</h3>
+        <ul class="vs-list">
+          <li><i class="lucide lucide-x-circle"></i> Tu trades à la main, sans savoir si tes décisions sont bonnes</li>
+          <li><i class="lucide lucide-x-circle"></i> Tu passes des heures à chercher des opportunités, pour rien</li>
+          <li><i class="lucide lucide-x-circle"></i> Tu paies des coachings à 2000€ à des "gourous" qui te lâchent au premier crash</li>
+          <li><i class="lucide lucide-x-circle"></i> Tu suis des signaux Telegram douteux qui finissent en perte</li>
+          <li><i class="lucide lucide-x-circle"></i> Tu restes bloqué au stade débutant, sans résultats</li>
+        </ul>
+      </div>
+
+      <div class="vs-card vs-card--with">
+        <h3 class="vs-card__heading">AVEC PCC</h3>
+        <ul class="vs-list">
+          <li><i class="lucide lucide-check-circle"></i> Un robot qui trade automatiquement sur l'or, 5 jours sur 7</li>
+          <li><i class="lucide lucide-check-circle"></i> Aucune connaissance trading requise — branché en 10 minutes</li>
+          <li><i class="lucide lucide-check-circle"></i> 100% gratuit. On se rémunère par profit sharing : si tu gagnes, on gagne</li>
+          <li><i class="lucide lucide-check-circle"></i> Ton argent reste sur ton compte broker, à ton nom, contrôle total</li>
+          <li><i class="lucide lucide-check-circle"></i> Communauté Telegram active où on partage les positions chaque jour</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 3 — STATS
+     ============================================================ -->
+<section class="section stats" id="stats">
+  <div class="container">
+    <h2 class="h-section">Des centaines de Français utilisent déjà le robot, chaque jour.</h2>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">870+</div>
+        <p class="stat-label">membres actifs sur le canal Telegram</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5j / 7</div>
+        <p class="stat-label">le robot trade automatiquement</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">0€</div>
+        <p class="stat-label">d'abonnement, de coaching, ou de frais cachés</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10 min</div>
+        <p class="stat-label">pour brancher le robot et démarrer</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4 — CTA INTERMÉDIAIRE #1
+     ============================================================ -->
+<section class="section cta-intermediate" id="cta-1">
+  <div class="container container--narrow">
+    <p class="body-lg">Tu veux essayer ?</p>
+    <button class="cta-primary cta-telegram cta-lg">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="1"/><path d="M5.64 5.64a9 9 0 0 1 12.72 0"/><path d="M2.64 8.64a13 13 0 0 1 18.72 0"/><path d="M8.64 2.64a17 17 0 0 1 6.72 0"/>
       </svg>
-      <div class="container">
-        <h2 class="section__title">Tu te reconnais dans une de ces situations ?</h2>
-        <div class="grid grid--3">
-          <article class="card">
-            <i class="ti ti-trending-down card__icon" aria-hidden="true"></i>
-            <h3 class="card__title">Tu as cramé un compte</h3>
-            <p class="card__text">Tu as testé des stratégies ou suivi des signaux qui ont vidé ton capital.</p>
-          </article>
-          <article class="card">
-            <i class="ti ti-clock card__icon" aria-hidden="true"></i>
-            <h3 class="card__title">Tu n'as pas le temps</h3>
-            <p class="card__text">Tu ne peux pas passer ta journée devant les graphiques pour gérer tes positions.</p>
-          </article>
-          <article class="card">
-            <i class="ti ti-shield-question card__icon" aria-hidden="true"></i>
-            <h3 class="card__title">Tu ne sais pas qui croire</h3>
-            <p class="card__text">Le milieu du trading est saturé de gourous, de coachings à 2000€ et de promesses douteuses.</p>
-          </article>
+      Rejoindre le canal Telegram — c'est gratuit
+    </button>
+    <p class="caption">Aucune carte bancaire demandée</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 5 — POURQUOI ÇA FONCTIONNE
+     ============================================================ -->
+<section class="section why" id="why">
+  <div class="container">
+    <h2 class="h-section">Pourquoi c'est différent ?</h2>
+    <p class="body-lg why__subtitle">Parce que c'est pensé pour des gens normaux, pas des traders pros.</p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <i class="lucide lucide-cpu why-card__icon"></i>
+        <h3 class="h-card">Automatisé</h3>
+        <p class="body">Le robot trade tout seul sur l'or, du lundi au vendredi. Tu n'as rien à surveiller, rien à valider. Une fois branché, il tourne en arrière-plan pendant que tu vis ta vie.</p>
+      </div>
+
+      <div class="why-card">
+        <i class="lucide lucide-gift why-card__icon"></i>
+        <h3 class="h-card">Vraiment gratuit</h3>
+        <p class="body">On se rémunère par profit sharing : 20% sur tes gains. Si tu gagnes, on gagne. Si tu ne gagnes pas, on ne gagne pas. Aucun abonnement, aucune formation à acheter, aucun coaching. Jamais.</p>
+      </div>
+
+      <div class="why-card">
+        <i class="lucide lucide-lock why-card__icon"></i>
+        <h3 class="h-card">Tu gardes le contrôle</h3>
+        <p class="body">Ton argent reste sur ton compte broker, à ton nom. PCC ne touche jamais à tes fonds. Tu peux retirer, arrêter le robot, ou changer ta config à tout moment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 6 — RÉSULTATS COMMUNAUTÉ
+     ============================================================ -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <h2 class="h-section">Les résultats partagés par la communauté</h2>
+    <p class="body-lg testimonials__subtitle">On partage tous les jours : les bons jours comme les mauvais. Aucun cherry-picking.</p>
+
+    <div class="testimonials-carousel">
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <img src="/assets/testimonials/testimonial-1.png" alt="Melle Sissou" class="testimonial-img">
+          <p class="caption testimonial-caption">Melle Sissou · Net Profit $365</p>
+        </div>
+        <div class="testimonial-card">
+          <img src="/assets/testimonials/testimonial-2.png" alt="Laurent Rob" class="testimonial-img">
+          <p class="caption testimonial-caption">Laurent Rob · +13% en 9 jours · Net Profit $239</p>
+        </div>
+        <div class="testimonial-card">
+          <img src="/assets/testimonials/testimonial-3.png" alt="Jean Luc" class="testimonial-img">
+          <p class="caption testimonial-caption">Jean Luc · Net Profit $515</p>
+        </div>
+        <div class="testimonial-card">
+          <img src="/assets/testimonials/testimonial-4.png" alt="Iron 20230" class="testimonial-img">
+          <p class="caption testimonial-caption">Iron 20230 · Net Profit $593</p>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- ============ SECTION 3 : COMMENT ÇA MARCHE (VIDEO) ============ -->
-    <section class="section section--alt" id="comment">
-      <div class="container">
-        <h2 class="section__title">Comment ça marche</h2>
-        <!-- TODO: remplacer par la vraie vidéo (MP4, WebM) ou embed YouTube -->
-        <div class="video-placeholder">
-          <div class="video-placeholder__inner">
-            <i class="ti ti-player-play" aria-hidden="true"></i>
-            <p>Vidéo — Comment ça marche en 3 étapes</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ SECTION 4 : PREUVES & RÉSULTATS ============ -->
-    <section class="section" id="preuves">
-      <svg class="section-bot" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="14" y="16" width="52" height="42" rx="12" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
-        <rect x="20" y="22" width="40" height="28" rx="8" fill="#0A1628"/>
-        <circle cx="32" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
-        <circle cx="48" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
-        <circle cx="32" cy="36" r="3" fill="#00C2FF"/>
-        <circle cx="48" cy="36" r="3" fill="#00C2FF"/>
-        <rect x="20" y="58" width="40" height="24" rx="8" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
-        <circle cx="40" cy="70" r="4" fill="#00C896"/>
-        <line x1="14" y1="65" x2="6" y2="60" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="4" cy="58" r="3" fill="#00C2FF"/>
+<!-- ============================================================
+     SECTION 7 — CTA INTERMÉDIAIRE #2
+     ============================================================ -->
+<section class="section cta-intermediate" id="cta-2">
+  <div class="container container--narrow">
+    <p class="body-lg">Tu veux voir ces résultats en direct ?</p>
+    <button class="cta-primary cta-telegram cta-lg">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="1"/><path d="M5.64 5.64a9 9 0 0 1 12.72 0"/><path d="M2.64 8.64a13 13 0 0 1 18.72 0"/><path d="M8.64 2.64a17 17 0 0 1 6.72 0"/>
       </svg>
-      <div class="container">
-        <h2 class="section__title">Les résultats partagés par notre communauté</h2>
-        <p class="section__sub">On partage tous les jours : les bons jours ET les mauvais. Aucun cherry-picking.</p>
-        <div class="grid grid--2 proofs">
-          <!-- TODO: remplacer ces placeholders par les captures écran réelles des membres (WebP + fallback) -->
-          <figure class="proof"><div class="proof__ph">Capture résultat #1</div></figure>
-          <figure class="proof"><div class="proof__ph">Capture résultat #2</div></figure>
-          <figure class="proof"><div class="proof__ph">Capture résultat #3</div></figure>
-          <figure class="proof">
-            <div class="proof__ph">Notre compte de test : de 10 000€ à 100 000€ en 18 mois</div>
-          </figure>
-        </div>
-        <p class="proofs__link">
-          <!-- TODO: remplacer # par l'URL publique du compte MyFxBook -->
-          <a href="#" target="_blank" rel="noopener">→ Voir le track record complet et public sur MyFxBook</a>
-        </p>
-      </div>
-    </section>
+      Rejoindre le canal Telegram
+    </button>
+    <p class="caption">Tu accèdes au feed complet et aux lives de trading</p>
+  </div>
+</section>
 
-    <!-- ============ SECTION 5 : POUR QUI / PAS POUR QUI ============ -->
-    <section class="section section--alt" id="pour-qui">
-      <svg class="section-bot section-bot--right" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="14" y="16" width="52" height="42" rx="12" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
-        <rect x="20" y="22" width="40" height="28" rx="8" fill="#0A1628"/>
-        <circle cx="32" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
-        <circle cx="48" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
-        <circle cx="32" cy="36" r="3" fill="#00C2FF"/>
-        <circle cx="48" cy="36" r="3" fill="#00C2FF"/>
-        <rect x="20" y="58" width="40" height="24" rx="8" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
-        <circle cx="40" cy="70" r="4" fill="#00C896"/>
-        <line x1="14" y1="65" x2="6" y2="60" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="4" cy="58" r="3" fill="#00C2FF"/>
+<!-- ============================================================
+     SECTION 8 — POUR QUI / PAS POUR QUI
+     ============================================================ -->
+<section class="section for-who" id="for-who">
+  <div class="container">
+    <h2 class="h-section">Ce canal est fait pour toi si...</h2>
+
+    <div class="for-who-grid">
+      <div class="for-who-card for-who-card--yes">
+        <h3>C'est pour toi si :</h3>
+        <ul class="for-who-list">
+          <li><i class="lucide lucide-check"></i> Tu veux investir mais tu ne sais pas par où commencer</li>
+          <li><i class="lucide lucide-check"></i> Tu en as marre des "experts" qui font payer des coachings à 2000€</li>
+          <li><i class="lucide lucide-check"></i> Tu as déjà perdu de l'argent en trading ou en crypto et tu cherches une approche différente</li>
+          <li><i class="lucide lucide-check"></i> Tu veux un revenu complémentaire automatisé, sans y passer tes soirées</li>
+          <li><i class="lucide lucide-check"></i> Tu cherches un système où tu gardes le contrôle de ton argent</li>
+        </ul>
+      </div>
+
+      <div class="for-who-card for-who-card--no">
+        <h3>Ce n'est pas pour toi si :</h3>
+        <ul class="for-who-list">
+          <li><i class="lucide lucide-x"></i> Tu cherches à doubler ton capital en quelques semaines</li>
+          <li><i class="lucide lucide-x"></i> Tu veux des gains garantis (aucun système ne peut promettre ça)</li>
+          <li><i class="lucide lucide-x"></i> Tu n'as pas au minimum 440€ que tu peux allouer au trading</li>
+          <li><i class="lucide lucide-x"></i> Tu veux apprendre à trader par toi-même</li>
+          <li><i class="lucide lucide-x"></i> Tu cherches un coaching gourou — ce n'est pas notre offre</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 9 — QUI EST DERRIÈRE PCC
+     ============================================================ -->
+<section class="section who-behind" id="who">
+  <div class="container">
+    <h2 class="h-section">Qui est derrière PCC ?</h2>
+
+    <div class="who-grid">
+      <div class="who-text">
+        <img src="/assets/talent-luc.jpg" alt="Luc" class="who-image">
+        <p class="body-lg">Moi c'est Luc. Je traîne dans la finance et le trading depuis 5 ans, et tu m'as peut-être déjà vu passer sur ton FYP TikTok (@playcomedyclub).</p>
+        <p class="body-lg">J'ai monté PCC avec Adrien, mon associé. Lui a lancé un premier robot automatique sur les cryptos il y a quelques années, moi je viens de la finance plus traditionnelle. On vit tous les deux en région parisienne — je suis à Clamart, lui à Nogent-sur-Marne.</p>
+        <p class="body-lg">Ce qu'on s'est rendu compte, c'est que pour des gens qui ont une vie à côté, le seul truc qui peut vraiment marcher dans le trading, c'est l'automatisation. C'est pour ça qu'on a développé PCC, qu'on l'a testé sur nos propres comptes pendant 2 ans et demi, et qu'on a décidé cet été de le mettre à dispo gratuitement.</p>
+        <p class="body-lg">On se rémunère uniquement via le profit sharing : si tu gagnes, on prend 20% sur tes gains. Si tu ne gagnes pas, on ne gagne pas non plus. Nos intérêts sont alignés.</p>
+        <p class="body-lg">Si t'as des questions, je réponds chaque jour dans le canal Telegram. T'as aussi mes TikToks si tu veux check par toi-même qui je suis avant de me suivre.</p>
+      </div>
+
+      <div class="who-tiktoks">
+        <div class="tiktok-embeds">
+          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@playcomedyclub/video/7486179575651634454" data-video-id="7486179575651634454">
+            <section>
+              <a target="_blank" title="@playcomedyclub" href="https://www.tiktok.com/@playcomedyclub?refer=embed">@playcomedyclub</a>
+            </section>
+          </blockquote>
+
+          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@playcomedyclub/video/7515462567519636758" data-video-id="7515462567519636758">
+            <section>
+              <a target="_blank" title="@playcomedyclub" href="https://www.tiktok.com/@playcomedyclub?refer=embed">@playcomedyclub</a>
+            </section>
+          </blockquote>
+        </div>
+
+        <div class="tiktok-badge">
+          <span class="badge-stat">📊 50K+ vues</span>
+          <span class="badge-stat">👥 7000+ followers</span>
+          <a href="https://www.tiktok.com/@playcomedyclub" target="_blank" rel="noopener noreferrer" class="badge-link">
+            Voir le profil TikTok →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TikTok SDK (charger une seule fois en fin de body) -->
+<script async src="https://www.tiktok.com/embed.js"></script>
+
+<!-- ============================================================
+     SECTION 10 — CTA INTERMÉDIAIRE #3
+     ============================================================ -->
+<section class="section cta-intermediate" id="cta-3">
+  <div class="container container--narrow">
+    <p class="body-lg">Convaincu ?</p>
+    <button class="cta-primary cta-telegram cta-lg">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="1"/><path d="M5.64 5.64a9 9 0 0 1 12.72 0"/><path d="M2.64 8.64a13 13 0 0 1 18.72 0"/><path d="M8.64 2.64a17 17 0 0 1 6.72 0"/>
       </svg>
-      <div class="container">
-        <h2 class="section__title">Pour qui c'est fait (et pour qui ça ne l'est pas)</h2>
-        <div class="grid grid--2 fit">
-          <div class="fit__col fit__col--yes">
-            <h3 class="fit__heading">C'est pour toi si :</h3>
-            <ul class="fit__list">
-              <li><i class="ti ti-circle-check" aria-hidden="true"></i> Tu as au moins 440€ que tu peux allouer au trading</li>
-              <li><i class="ti ti-circle-check" aria-hidden="true"></i> Tu cherches un complément de revenu, pas un raccourci vers la richesse</li>
-              <li><i class="ti ti-circle-check" aria-hidden="true"></i> Tu préfères automatiser plutôt qu'apprendre à trader manuellement</li>
-              <li><i class="ti ti-circle-check" aria-hidden="true"></i> Tu vis en France et tu peux ouvrir un compte broker</li>
-            </ul>
-          </div>
-          <div class="fit__col fit__col--no">
-            <h3 class="fit__heading">Ce n'est pas pour toi si :</h3>
-            <ul class="fit__list">
-              <li><i class="ti ti-circle-x" aria-hidden="true"></i> Tu cherches à doubler ton capital en quelques semaines</li>
-              <li><i class="ti ti-circle-x" aria-hidden="true"></i> Tu n'as pas de capital disponible (ne mets pas d'argent emprunté)</li>
-              <li><i class="ti ti-circle-x" aria-hidden="true"></i> Tu veux apprendre à trader par toi-même</li>
-              <li><i class="ti ti-circle-x" aria-hidden="true"></i> Tu cherches un coaching gourou à 2000€ — ce n'est pas notre offre</li>
-            </ul>
-          </div>
+      Rejoindre le canal Telegram
+    </button>
+    <p class="caption">Accès immédiat, gratuit, sans engagement</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 11 — RECAP DES BÉNÉFICES
+     ============================================================ -->
+<section class="section benefits" id="benefits">
+  <div class="container container--narrow">
+    <h2 class="h-section">En rejoignant le canal, tu obtiens :</h2>
+
+    <ul class="benefits-list">
+      <li><i class="lucide lucide-check"></i> Le lien pour brancher le robot PCC en 10 minutes</li>
+      <li><i class="lucide lucide-check"></i> L'accès à un canal Telegram actif avec 870+ membres</li>
+      <li><i class="lucide lucide-check"></i> Les positions du robot partagées chaque jour, en transparence (gains et pertes)</li>
+      <li><i class="lucide lucide-check"></i> Les lives de trading où on montre le robot en train de trader en direct</li>
+      <li><i class="lucide lucide-check"></i> Un accès direct à notre équipe (Luc et Adrien) pour tes questions</li>
+      <li><i class="lucide lucide-check"></i> Aucun abonnement, jamais. Aucune carte bancaire demandée.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 12 — FAQ
+     ============================================================ -->
+<section class="section faq" id="faq">
+  <div class="container container--narrow">
+    <h2 class="h-section">Les questions qu'on nous pose tous les jours</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span>Comment ça peut être gratuit ?</span>
+          <i class="lucide lucide-chevron-down"></i>
+        </button>
+        <div class="faq-content">
+          <p>On se rémunère uniquement via le profit sharing : 20% sur tes gains. Concrètement, si tu fais 500€ de gains sur le mois, on prend 100€. Si tu ne fais aucun gain, on ne prend rien. Aucun frais à l'inscription, aucun abonnement, aucune formation à acheter. Nos intérêts sont alignés à 100%.</p>
         </div>
       </div>
-    </section>
 
-    <!-- ============ SECTION 6 : FAQ ============ -->
-    <section class="section" id="faq">
-      <svg class="section-bot" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="14" y="16" width="52" height="42" rx="12" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
-        <rect x="20" y="22" width="40" height="28" rx="8" fill="#0A1628"/>
-        <circle cx="32" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
-        <circle cx="48" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
-        <circle cx="32" cy="36" r="3" fill="#00C2FF"/>
-        <circle cx="48" cy="36" r="3" fill="#00C2FF"/>
-        <rect x="20" y="58" width="40" height="24" rx="8" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
-        <circle cx="40" cy="70" r="4" fill="#00C896"/>
-        <line x1="14" y1="65" x2="6" y2="60" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="4" cy="58" r="3" fill="#00C2FF"/>
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span>Quel est le risque pour mon argent ?</span>
+          <i class="lucide lucide-chevron-down"></i>
+        </button>
+        <div class="faq-content">
+          <p>Le trading comporte un risque de perte en capital, comme tout placement spéculatif. Aucun système de trading ne peut garantir un gain. Cela dit, tu gardes le contrôle total : tu peux désactiver le robot à tout moment, retirer ton capital quand tu veux, et ton compte broker est à ton nom — on n'y a jamais accès.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span>Quel montant minimum pour démarrer ?</span>
+          <i class="lucide lucide-chevron-down"></i>
+        </button>
+        <div class="faq-content">
+          <p>Le minimum est de 440€, et c'est toi qui déposes ce capital directement sur ton compte broker — on n'y a jamais accès. On recommande plutôt 500€+ pour que les gains soient significatifs. Avec 1000-2000€ tu commences à voir des résultats intéressants. Au-delà, c'est proportionnel.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span>Faut-il avoir de l'expérience en trading ?</span>
+          <i class="lucide lucide-chevron-down"></i>
+        </button>
+        <div class="faq-content">
+          <p>Non. Le robot est conçu pour des gens qui n'ont aucune notion de trading. Tout est automatisé. Tu n'as rien besoin d'installer ni de paramétrer — on s'occupe de tout au moment du branchement.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span>Combien de temps pour mettre en place ?</span>
+          <i class="lucide lucide-chevron-down"></i>
+        </button>
+        <div class="faq-content">
+          <p>Environ 10 minutes. Tu crées ton compte de trading chez notre broker partenaire (5 min), tu fais ton dépôt, on te branche au robot, et tes premiers trades arrivent dans la foulée.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span>Et si je veux arrêter ?</span>
+          <i class="lucide lucide-chevron-down"></i>
+        </button>
+        <div class="faq-content">
+          <p>Tu peux arrêter le robot et fermer ton compte broker quand tu veux. Aucune obligation, aucune pénalité. C'est ton compte, ton argent.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 13 — FINAL CTA
+     ============================================================ -->
+<section class="section final-cta" id="final-cta">
+  <div class="container container--narrow">
+    <h2 class="h-section">Prêt à brancher le robot ?</h2>
+    <p class="body-lg">Accès immédiat au canal Telegram. Gratuit. Sans engagement.</p>
+    <button class="cta-primary cta-telegram cta-xl">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="1"/><path d="M5.64 5.64a9 9 0 0 1 12.72 0"/><path d="M2.64 8.64a13 13 0 0 1 18.72 0"/><path d="M8.64 2.64a17 17 0 0 1 6.72 0"/>
       </svg>
-      <div class="container container--narrow">
-        <h2 class="section__title">Les questions qu'on nous pose tous les jours</h2>
-        <div class="faq">
-          <div class="faq__item">
-            <button class="faq__q" aria-expanded="false">
-              <span>Comment ça peut être gratuit ?</span>
-              <i class="ti ti-chevron-down faq__chevron" aria-hidden="true"></i>
-            </button>
-            <div class="faq__a"><p>Notre broker partenaire nous paye une commission sur les volumes tradés par les membres. Plus la communauté trade, plus on est rémunérés. Donc on est totalement aligné : on veut que tu réussisses et que tu trades longtemps. Aucun frais pour toi, ni à l'inscription ni en récurrent.</p></div>
-          </div>
-          <div class="faq__item">
-            <button class="faq__q" aria-expanded="false">
-              <span>Quel est le risque pour mon argent ?</span>
-              <i class="ti ti-chevron-down faq__chevron" aria-hidden="true"></i>
-            </button>
-            <div class="faq__a"><p>Le trading comporte un risque de perte en capital, comme tout placement spéculatif. Le robot suit une stratégie qu'on a backtestée et testée 18 mois en live, mais aucun système ne peut garantir un gain. Tu gardes le contrôle total : tu peux désactiver le robot à tout moment, retirer ton capital quand tu veux, ton compte broker est à ton nom.</p></div>
-          </div>
-          <div class="faq__item">
-            <button class="faq__q" aria-expanded="false">
-              <span>Quel montant minimum recommandé ?</span>
-              <i class="ti ti-chevron-down faq__chevron" aria-hidden="true"></i>
-            </button>
-            <div class="faq__a"><p>Le minimum pour démarrer est de 440€, et c'est toi qui déposes ce capital directement sur ton compte — on n'y a jamais accès. On recommande plutôt 500€+ pour que les gains soient significatifs. Avec 1000-2000€, tu commences à voir des résultats intéressants. Au-delà, c'est proportionnel.</p></div>
-          </div>
-          <div class="faq__item">
-            <button class="faq__q" aria-expanded="false">
-              <span>Est-ce que c'est légal ?</span>
-              <i class="ti ti-chevron-down faq__chevron" aria-hidden="true"></i>
-            </button>
-            <div class="faq__a"><p>Oui. Tu ouvres un compte personnel chez un broker régulé, et tu y connectes un outil de trading automatisé (légalement appelé un EA, Expert Advisor). C'est une pratique répandue et autorisée. Tu restes propriétaire à 100% de ton compte et de ton capital.</p></div>
-          </div>
-          <div class="faq__item">
-            <button class="faq__q" aria-expanded="false">
-              <span>Quand est-ce que je vois les premiers résultats ?</span>
-              <i class="ti ti-chevron-down faq__chevron" aria-hidden="true"></i>
-            </button>
-            <div class="faq__a"><p>Les premiers trades arrivent dès le jour de l'activation, du lundi au vendredi. Pour évaluer la performance moyenne du robot dans des conditions normales, compte 4 à 6 semaines. Comme tout système de trading, il y a des semaines positives et des semaines négatives — on regarde la tendance sur la durée.</p></div>
-          </div>
-        </div>
+      Rejoindre le canal Telegram
+    </button>
+    <p class="caption">Tu pourras désactiver à tout moment</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 14 — FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <img src="/assets/logo-pcc.png" alt="Play Comedy Club" class="footer-logo">
+        <p class="body">Play Comedy Club</p>
+        <p class="caption">Le robot de trading automatisé pour des gens normaux.</p>
       </div>
-    </section>
 
-    <!-- ============ SECTION 7 : FORMULAIRE MULTI-ÉTAPES ============ -->
-    <section class="section section--alt" id="formulaire">
-      <svg class="section-bot section-bot--right" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="14" y="16" width="52" height="42" rx="12" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
-        <rect x="20" y="22" width="40" height="28" rx="8" fill="#0A1628"/>
-        <circle cx="32" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
-        <circle cx="48" cy="36" r="7" fill="none" stroke="#00C2FF" stroke-width="1.5"/>
-        <circle cx="32" cy="36" r="3" fill="#00C2FF"/>
-        <circle cx="48" cy="36" r="3" fill="#00C2FF"/>
-        <rect x="20" y="58" width="40" height="24" rx="8" fill="#0E1E36" stroke="#00C2FF" stroke-width="2"/>
-        <circle cx="40" cy="70" r="4" fill="#00C896"/>
-        <line x1="14" y1="65" x2="6" y2="60" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="4" cy="58" r="3" fill="#00C2FF"/>
-      </svg>
-      <div class="container container--narrow">
-        <h2 class="section__title">Vois si tu peux rejoindre</h2>
-
-        <div class="formcard">
-          <!-- Progress -->
-          <div class="progress" aria-hidden="true">
-            <div class="progress__bar"><span class="progress__fill" id="progressFill"></span></div>
-            <span class="progress__label" id="progressLabel">Étape 1 / 3</span>
-          </div>
-
-          <form id="leadForm" novalidate>
-            <!-- STEP 1 -->
-            <fieldset class="step is-active" data-step="1">
-              <legend class="step__q">Quel montant peux-tu allouer au trading ?</legend>
-              <p class="step__hint">Minimum 440€ pour démarrer (c'est toi qui déposes). On recommande 500€+ pour des résultats significatifs.</p>
-              <div class="radios" role="radiogroup" aria-label="Montant">
-                <label class="radio"><input type="radio" name="montant" value="Moins de 440€" required><span>Moins de 440€</span></label>
-                <label class="radio"><input type="radio" name="montant" value="Entre 440€ et 800€"><span>Entre 440€ et 800€</span></label>
-                <label class="radio"><input type="radio" name="montant" value="Entre 800€ et 1500€"><span>Entre 800€ et 1500€</span></label>
-                <label class="radio"><input type="radio" name="montant" value="Plus de 1500€"><span>Plus de 1500€</span></label>
-              </div>
-              <p class="field-error" data-error-for="step1" hidden><i class="ti ti-alert-circle" aria-hidden="true"></i> Sélectionne une option pour continuer.</p>
-              <div class="step__nav">
-                <button type="button" class="btn btn--primary js-next">Suivant</button>
-              </div>
-            </fieldset>
-
-            <!-- STEP 2 -->
-            <fieldset class="step" data-step="2">
-              <legend class="step__q">Quelle est ton expérience en trading ?</legend>
-              <div class="radios" role="radiogroup" aria-label="Expérience">
-                <label class="radio"><input type="radio" name="experience" value="Débutant, je n'ai jamais tradé" required><span>Débutant, je n'ai jamais tradé</span></label>
-                <label class="radio"><input type="radio" name="experience" value="J'ai déjà essayé mais j'ai cramé un compte"><span>J'ai déjà essayé mais j'ai cramé un compte</span></label>
-                <label class="radio"><input type="radio" name="experience" value="Je trade régulièrement"><span>Je trade régulièrement</span></label>
-                <label class="radio"><input type="radio" name="experience" value="Je suis expérimenté"><span>Je suis expérimenté</span></label>
-              </div>
-
-              <p class="step__q step__q--inline">Quel est ton objectif principal ?</p>
-              <div class="radios" role="radiogroup" aria-label="Objectif">
-                <label class="radio"><input type="radio" name="objectif" value="Compléter mes revenus" required><span>Compléter mes revenus</span></label>
-                <label class="radio"><input type="radio" name="objectif" value="Remplacer mon salaire à terme"><span>Remplacer mon salaire à terme</span></label>
-                <label class="radio"><input type="radio" name="objectif" value="Faire fructifier une épargne"><span>Faire fructifier une épargne</span></label>
-                <label class="radio"><input type="radio" name="objectif" value="Juste curieux d'essayer"><span>Juste curieux d'essayer</span></label>
-              </div>
-              <p class="field-error" data-error-for="step2" hidden><i class="ti ti-alert-circle" aria-hidden="true"></i> Réponds aux deux questions pour continuer.</p>
-              <div class="step__nav">
-                <button type="button" class="btn btn--ghost js-prev">Précédent</button>
-                <button type="button" class="btn btn--primary js-next">Suivant</button>
-              </div>
-            </fieldset>
-
-            <!-- STEP 3 -->
-            <fieldset class="step" data-step="3">
-              <legend class="step__q">Tes coordonnées</legend>
-              <div class="field">
-                <label for="prenom">Prénom</label>
-                <input type="text" id="prenom" name="prenom" autocomplete="given-name" required>
-              </div>
-              <div class="field">
-                <label for="nom">Nom</label>
-                <input type="text" id="nom" name="nom" autocomplete="family-name" required>
-              </div>
-              <div class="field">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required>
-              </div>
-              <div class="field">
-                <label for="telephone">Numéro de téléphone</label>
-                <input type="tel" id="telephone" name="telephone" autocomplete="tel" inputmode="tel" placeholder="06 12 34 56 78" required>
-              </div>
-              <label class="checkbox"><input type="checkbox" name="consent_contact" required><span>J'accepte d'être recontacté par téléphone ou WhatsApp</span></label>
-              <label class="checkbox"><input type="checkbox" name="consent_risque" required><span>J'ai compris que le trading comporte un risque de perte en capital</span></label>
-
-              <p class="field-error" data-error-for="step3" hidden><i class="ti ti-alert-circle" aria-hidden="true"></i> <span class="field-error__msg">Remplis tous les champs et coche les deux cases.</span></p>
-              <div class="step__nav">
-                <button type="button" class="btn btn--ghost js-prev">Précédent</button>
-                <button type="submit" class="btn btn--primary js-submit">Envoyer ma candidature</button>
-              </div>
-            </fieldset>
-          </form>
-
-          <!-- SUCCESS -->
-          <div class="success" id="successScreen" hidden>
-            <i class="ti ti-circle-check success__icon" aria-hidden="true"></i>
-            <h3 class="success__title">Reçu !</h3>
-            <p class="success__msg" id="successMsg">On te recontacte sous 24h ouvrées.</p>
-            <!-- TODO: remplacer # par le lien Telegram de la communauté -->
-            <a href="#" target="_blank" rel="noopener" class="btn btn--ghost" id="successTelegram">
-              <i class="ti ti-brand-telegram" aria-hidden="true"></i> Rejoindre le Telegram
-            </a>
-          </div>
-        </div>
+      <div class="footer-col footer-links">
+        <a href="/mentions-legales.html" class="caption">Mentions légales</a>
+        <a href="/politique-confidentialite.html" class="caption">Politique de confidentialité</a>
+        <a href="/contact.html" class="caption">Contact</a>
       </div>
-    </section>
-  </main>
 
-  <!-- ============ SECTION 8 : FOOTER / MENTIONS LÉGALES ============ -->
-  <footer class="footer">
-    <div class="container container--narrow footer__inner">
-      <img class="footer__logo" src="assets/logo-pcc.png" alt="Play Comedy Club" width="120" height="52" loading="lazy">
-      <p class="footer__brand">Play Comedy Club</p>
-      <div class="footer__social">
-        <a href="https://www.tiktok.com/@playcomedyclub" target="_blank" rel="noopener" aria-label="TikTok Play Comedy Club">
-          <i class="ti ti-brand-tiktok" aria-hidden="true"></i> @playcomedyclub
+      <div class="footer-col footer-social">
+        <p class="caption">Suivez-nous :</p>
+        <a href="https://www.tiktok.com/@playcomedyclub" target="_blank" rel="noopener noreferrer" class="caption">
+          <i class="lucide lucide-music"></i> @playcomedyclub
         </a>
       </div>
-      <nav class="footer__links">
-        <a href="mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span>
-        <a href="politique-confidentialite.html">Politique de confidentialité</a><span aria-hidden="true">·</span>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <p class="footer__copy">© 2026 Play Comedy Club</p>
     </div>
-  </footer>
 
+    <div class="footer-bottom">
+      <p class="caption">© 2026 Play Comedy Club</p>
+    </div>
+  </div>
+</footer>
 
-  <!-- ============ SECTION 9 : STICKY CTA MOBILE ============ -->
-  <a href="#formulaire" class="sticky-cta js-scroll" id="stickyCta" hidden>Voir si je peux rejoindre →</a>
-
-  <script src="script.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>

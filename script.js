@@ -1,217 +1,208 @@
 /* ============================================================
-   Pay Comedy Club — landing page logic
-   - smooth-scroll CTAs
-   - sticky mobile CTA (visible after hero, hidden when form is shown)
-   - FAQ accordion
-   - 3-step lead form with validation + POST submission
+   PLAY COMEDY CLUB — LANDING PAGE SCRIPTS
    ============================================================ */
 
-// --- CONFIG ---------------------------------------------------
-// TODO: remplacer par l'endpoint réel de réception des leads (webhook, CRM, etc.)
-window.PCC_FORM_ENDPOINT = window.PCC_FORM_ENDPOINT || 'https://example.com/api/leads';
+// Configuration centralisée
+const TG_LINK = 'https://t.me/+GI6hoThpldJjZWI0';
 
-(function () {
-  'use strict';
+// ============================================================
+// UTILITY FUNCTIONS
+// ============================================================
 
-  /* ---------- Smooth scroll for CTAs ---------- */
-  document.querySelectorAll('.js-scroll').forEach(function (el) {
-    el.addEventListener('click', function (e) {
-      var target = document.querySelector(el.getAttribute('href'));
+function generateEventId() {
+  return 'lead_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+}
+
+// ============================================================
+// META PIXEL — LEAD EVENT TRACKING
+// ============================================================
+
+function setupCtaTracking() {
+  document.querySelectorAll('.cta-telegram').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const eventId = generateEventId();
+
+      // Send Lead event to Meta Pixel
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'Lead', {
+          content_category: 'telegram_click',
+          content_name: 'pcc_telegram_join',
+          value: 0,
+          currency: 'EUR'
+        }, { eventID: eventId });
+      }
+
+      // Petit delay pour s'assurer que l'event est envoyé avant la redirection
+      setTimeout(() => {
+        window.open(TG_LINK, '_blank', 'noopener,noreferrer');
+      }, 150);
+
+      e.preventDefault();
+    });
+  });
+}
+
+// ============================================================
+// SMOOTH SCROLL FOR INTERNAL LINKS
+// ============================================================
+
+function setupSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      if (targetId === '#') return;
+
+      const target = document.querySelector(targetId);
       if (!target) return;
+
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+}
 
-  /* ---------- Sticky mobile CTA ---------- */
-  var stickyCta = document.getElementById('stickyCta');
-  var hero = document.getElementById('hero');
-  var form = document.getElementById('formulaire');
+// ============================================================
+// FAQ ACCORDION
+// ============================================================
 
-  if (stickyCta && hero && form && 'IntersectionObserver' in window) {
-    var heroVisible = true;
-    var formVisible = false;
+function setupFaqAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
 
-    function updateSticky() {
-      // Show only when hero is out of view AND the form is not yet visible.
-      var shouldShow = !heroVisible && !formVisible;
-      stickyCta.hidden = !shouldShow;
-    }
+  faqItems.forEach((item) => {
+    const trigger = item.querySelector('.faq-trigger');
+    const content = item.querySelector('.faq-content');
 
-    new IntersectionObserver(function (entries) {
-      heroVisible = entries[0].isIntersecting;
-      updateSticky();
-    }, { threshold: 0 }).observe(hero);
+    if (!trigger || !content) return;
 
-    new IntersectionObserver(function (entries) {
-      formVisible = entries[0].isIntersecting;
-      updateSticky();
-    }, { threshold: 0.15 }).observe(form);
-  }
+    // Set initial max-height to 0
+    content.style.maxHeight = '0px';
 
-  /* ---------- FAQ accordion ---------- */
-  document.querySelectorAll('.faq__q').forEach(function (btn) {
-    var panel = btn.nextElementSibling;
-    btn.addEventListener('click', function () {
-      var open = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!open));
-      panel.style.maxHeight = open ? '0' : panel.scrollHeight + 'px';
-    });
-  });
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
 
-  /* ---------- Multi-step form ---------- */
-  var leadForm = document.getElementById('leadForm');
-  if (!leadForm) return;
-
-  var steps = Array.prototype.slice.call(leadForm.querySelectorAll('.step'));
-  var progressFill = document.getElementById('progressFill');
-  var progressLabel = document.getElementById('progressLabel');
-  var current = 0;
-
-  function showStep(i) {
-    steps.forEach(function (s, idx) { s.classList.toggle('is-active', idx === i); });
-    current = i;
-    var pct = (i / steps.length) * 100;
-    if (progressFill) progressFill.style.width = pct + '%';
-    if (progressLabel) progressLabel.textContent = 'Étape ' + (i + 1) + ' / ' + steps.length;
-    var firstField = steps[i].querySelector('input');
-    if (firstField) firstField.focus({ preventScroll: true });
-  }
-
-  function showError(stepEl, message) {
-    var err = stepEl.querySelector('.field-error');
-    if (!err) return;
-    if (message) {
-      var msgSpan = err.querySelector('.field-error__msg');
-      if (msgSpan) msgSpan.textContent = message;
-    }
-    err.hidden = false;
-  }
-  function clearError(stepEl) {
-    var err = stepEl.querySelector('.field-error');
-    if (err) err.hidden = true;
-  }
-
-  // French phone: accepts 0X........ or +33X........ with optional spaces/dots/dashes
-  function isValidFrenchPhone(value) {
-    var cleaned = value.replace(/[\s.\-]/g, '');
-    return /^(?:(?:\+33|0033)[1-9]\d{8}|0[1-9]\d{8})$/.test(cleaned);
-  }
-  function isValidEmail(value) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-  }
-
-  function validateStep(i) {
-    var stepEl = steps[i];
-    clearError(stepEl);
-
-    if (i === 0) {
-      if (!leadForm.querySelector('input[name="montant"]:checked')) {
-        showError(stepEl); return false;
-      }
-      return true;
-    }
-
-    if (i === 1) {
-      var hasExp = leadForm.querySelector('input[name="experience"]:checked');
-      var hasObj = leadForm.querySelector('input[name="objectif"]:checked');
-      if (!hasExp || !hasObj) { showError(stepEl); return false; }
-      return true;
-    }
-
-    if (i === 2) {
-      var prenom = leadForm.prenom;
-      var nom = leadForm.nom;
-      var email = leadForm.email;
-      var tel = leadForm.telephone;
-      var c1 = leadForm.consent_contact;
-      var c2 = leadForm.consent_risque;
-      var ok = true, msg = 'Remplis tous les champs et coche les deux cases.';
-
-      [prenom, nom, email, tel].forEach(function (f) { f.classList.remove('is-invalid'); });
-
-      if (!prenom.value.trim()) { prenom.classList.add('is-invalid'); ok = false; }
-      if (!nom.value.trim()) { nom.classList.add('is-invalid'); ok = false; }
-      if (!isValidEmail(email.value.trim())) {
-        email.classList.add('is-invalid'); ok = false;
-        if (email.value.trim()) msg = 'Vérifie le format de ton email.';
-      }
-      if (!isValidFrenchPhone(tel.value.trim())) {
-        tel.classList.add('is-invalid'); ok = false;
-        if (tel.value.trim()) msg = 'Numéro de téléphone français invalide (ex : 06 12 34 56 78).';
-      }
-      if (!c1.checked || !c2.checked) ok = false;
-
-      if (!ok) { showError(stepEl, msg); return false; }
-      return true;
-    }
-    return true;
-  }
-
-  leadForm.querySelectorAll('.js-next').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      if (validateStep(current)) showStep(current + 1);
-    });
-  });
-  leadForm.querySelectorAll('.js-prev').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      clearError(steps[current]);
-      showStep(current - 1);
-    });
-  });
-
-  /* ---------- Submission ---------- */
-  function collectData() {
-    var fd = new FormData(leadForm);
-    var data = {};
-    fd.forEach(function (v, k) { data[k] = v; });
-    data.consent_contact = leadForm.consent_contact.checked;
-    data.consent_risque = leadForm.consent_risque.checked;
-    data.submitted_at = new Date().toISOString();
-    data.page = location.href;
-    return data;
-  }
-
-  function showSuccess(data) {
-    leadForm.hidden = true;
-    document.querySelector('.progress').hidden = true;
-    var screen = document.getElementById('successScreen');
-    var msg = document.getElementById('successMsg');
-
-    if (data.montant === 'Moins de 440€') {
-      msg.textContent = 'Tu vas être ajouté à notre liste d\'attente prioritaire — on revient vers toi quand on ouvre des places pour les capitaux plus modestes.';
-    } else {
-      msg.textContent = 'On te recontacte sous 24h ouvrées.';
-    }
-    screen.hidden = false;
-    screen.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-
-  leadForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (!validateStep(2)) return;
-
-    var data = collectData();
-    var submitBtn = leadForm.querySelector('.js-submit');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi…';
-
-    fetch(window.PCC_FORM_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
-      .then(function (res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        showSuccess(data);
-      })
-      .catch(function () {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Envoyer ma candidature';
-        showError(steps[2], 'Une erreur est survenue, contacte-nous sur Telegram.');
+      // Close all other items
+      faqItems.forEach((otherItem) => {
+        if (otherItem !== item && otherItem.classList.contains('is-open')) {
+          otherItem.classList.remove('is-open');
+          const otherContent = otherItem.querySelector('.faq-content');
+          if (otherContent) {
+            otherContent.style.maxHeight = '0px';
+          }
+        }
       });
-  });
 
-  // init
-  showStep(0);
-})();
+      // Toggle current item
+      if (isOpen) {
+        item.classList.remove('is-open');
+        content.style.maxHeight = '0px';
+      } else {
+        item.classList.add('is-open');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });
+  });
+}
+
+// ============================================================
+// MOBILE TESTIMONIALS CAROUSEL
+// ============================================================
+
+function setupTestimonialsCarousel() {
+  const carousel = document.querySelector('.testimonials-carousel');
+
+  if (!carousel) return;
+
+  // Enable scroll-snap on mobile
+  if (window.innerWidth < 768) {
+    carousel.style.scrollSnapType = 'x mandatory';
+    const cards = carousel.querySelectorAll('.testimonial-card');
+    cards.forEach((card) => {
+      card.style.scrollSnapAlign = 'center';
+    });
+  }
+}
+
+// ============================================================
+// HERO CAROUSEL MOBILE FALLBACK
+// ============================================================
+
+function setupHeroCarouselMobile() {
+  const carousel = document.querySelector('.hero__carousel');
+
+  if (!carousel) return;
+
+  if (window.innerWidth < 1024) {
+    carousel.style.overflowX = 'auto';
+    carousel.style.scrollSnapType = 'x mandatory';
+    carousel.style.webkitOverflowScrolling = 'touch';
+
+    const images = carousel.querySelectorAll('.hero__carousel-img');
+    images.forEach((img) => {
+      img.style.scrollSnapAlign = 'center';
+      img.style.minWidth = '140px';
+      img.style.flexShrink = 0;
+    });
+  }
+}
+
+// ============================================================
+// LUCIDE ICONS FALLBACK
+// ============================================================
+
+function replaceLucideIcons() {
+  // Lucide is loaded via CDN, but this ensures compatibility
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+}
+
+// ============================================================
+// IMAGE LAZY LOADING POLYFILL
+// ============================================================
+
+function setupLazyLoading() {
+  const images = document.querySelectorAll('img[loading="lazy"]');
+
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src || img.src;
+          img.classList.add('loaded');
+          imageObserver.unobserve(img);
+        }
+      });
+    });
+
+    images.forEach((img) => imageObserver.observe(img));
+  }
+}
+
+// ============================================================
+// INIT — RUN ALL SCRIPTS
+// ============================================================
+
+function init() {
+  setupCtaTracking();
+  setupSmoothScroll();
+  setupFaqAccordion();
+  setupTestimonialsCarousel();
+  setupHeroCarouselMobile();
+  replaceLucideIcons();
+  setupLazyLoading();
+}
+
+// Wait for DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+// Re-init lucide icons after TikTok embed loads (in case DOM changed)
+window.addEventListener('load', () => {
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+});
