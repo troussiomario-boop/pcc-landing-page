@@ -1,6 +1,8 @@
 /* ============================================================================
-   PCC LANDING PAGE — VISUAL UNIVERSE (v3)
-   Hero corrige (taille video, espace vide, robot) + backgrounds coherents + mobile.
+   PCC LANDING PAGE — VISUAL UNIVERSE (v5)
+   FIX RACINE : styles.css met .hero en display:flex, ce qui casse le layout.
+   On force .hero en display:block => les colonnes (copy gauche / video droite)
+   fonctionnent enfin. + backgrounds coherents + responsive.
    ============================================================================ */
 
 /* ---- SAFETY ---- */
@@ -9,13 +11,13 @@ img { max-width: 100%; }
 
 /* ===========================================================================
    1. HERO
-   La colonne droite est dimensionnee PILE a la taille de la video
-   (1fr | minmax(320px,440px)) => plus d'espace vide a droite.
    =========================================================================== */
 #hero {
+  display: block !important;        /* <-- FIX RACINE (etait flex) */
+  min-height: auto !important;
   position: relative;
   overflow: hidden;
-  min-height: auto !important;
+  padding: 72px 24px !important;
   background-color: #0A1628 !important;
   background-image:
     linear-gradient(135deg, rgba(10, 22, 40, 0.86) 0%, rgba(10, 22, 40, 0.74) 100%),
@@ -26,32 +28,41 @@ img { max-width: 100%; }
 }
 
 #hero .container {
-  display: grid !important;
-  grid-template-columns: 1fr minmax(320px, 440px) !important;
-  gap: 48px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
   align-items: center !important;
+  justify-content: center !important;
+  gap: 48px !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
 }
 
+/* COPY a gauche */
 #hero .hero__content {
-  text-align: left !important;
-  max-width: 100% !important;
+  flex: 1 1 420px !important;
   min-width: 0 !important;
+  max-width: 600px !important;
+  text-align: left !important;
 }
 
 #hero .h-hero {
-  font-size: clamp(28px, 3.4vw, 46px) !important;
+  font-size: clamp(30px, 3.6vw, 48px) !important;
   line-height: 1.12 !important;
   max-width: none !important;
   margin-bottom: 18px !important;
 }
 
 #hero .hero__subtitle {
-  max-width: 520px !important;
+  max-width: 540px !important;
   margin: 18px 0 26px !important;
 }
 
-/* On FORCE l'affichage de la colonne video (styles.css la cache <1024px) */
+/* VIDEO a droite */
 #hero .hero__visuals {
+  flex: 0 1 360px !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -61,7 +72,7 @@ img { max-width: 100%; }
 #hero .hero__video {
   position: relative !important;
   width: 100% !important;
-  max-width: 440px !important;
+  max-width: 360px !important;
   margin: 0 !important;
 }
 
@@ -75,14 +86,14 @@ img { max-width: 100%; }
     0 0 40px rgba(0, 194, 255, 0.18) !important;
 }
 
-/* Robot : petit, dans le coin bas-gauche, ne couvre PAS le visage */
+/* Robot : petit, coin bas-gauche de la video */
 #hero .hero__robot {
   position: absolute !important;
-  left: -24px !important;
-  bottom: -24px !important;
+  left: -22px !important;
+  bottom: -22px !important;
   right: auto !important;
   top: auto !important;
-  width: 92px !important;
+  width: 88px !important;
   height: auto !important;
   z-index: 4 !important;
   pointer-events: none !important;
@@ -93,6 +104,17 @@ img { max-width: 100%; }
 @keyframes pcc-robot-float {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-12px); }
+}
+
+/* Empilement (ecrans etroits) : tout centre */
+@media (max-width: 880px) {
+  #hero .hero__content {
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+  #hero .hero__subtitle { margin-left: auto !important; margin-right: auto !important; }
+  #hero .hero__visuals { flex-basis: 100% !important; }
 }
 
 /* ===========================================================================
@@ -129,27 +151,13 @@ img { max-width: 100%; }
 /* #stats, #testimonials, #who : restent dark */
 
 /* ===========================================================================
-   3. TABLET / MOBILE (<=1023px) : on empile en 1 colonne
-   =========================================================================== */
-@media (max-width: 1023px) {
-  #hero .container {
-    grid-template-columns: 1fr !important;
-    gap: 30px !important;
-    text-align: center !important;
-    justify-items: center !important;
-  }
-  #hero .hero__content { text-align: center !important; }
-  #hero .hero__subtitle { margin-left: auto !important; margin-right: auto !important; }
-  #hero .hero__video { max-width: 360px !important; margin: 0 auto !important; }
-}
-
-/* ===========================================================================
-   4. MOBILE (<=768px)
+   3. MOBILE (<=768px)
    =========================================================================== */
 @media (max-width: 768px) {
+  #hero { padding: 48px 18px !important; }
   #hero .h-hero { font-size: clamp(26px, 7vw, 36px) !important; }
   #hero .hero__video { max-width: 300px !important; }
-  #hero .hero__robot { width: 70px !important; left: -8px !important; bottom: -10px !important; }
+  #hero .hero__robot { width: 66px !important; left: -8px !important; bottom: -10px !important; }
 
   #hero, #vs, #why, #for-who, #final-cta { background-attachment: scroll !important; }
 
@@ -172,15 +180,11 @@ img { max-width: 100%; }
   }
 }
 
-/* ===========================================================================
-   5. PETIT MOBILE (<=400px)
-   =========================================================================== */
 @media (max-width: 400px) {
   #stats .stats-grid { grid-template-columns: 1fr !important; }
-  #hero .hero__robot { width: 60px !important; }
+  #hero .hero__robot { width: 56px !important; }
 }
 
-/* ---- REDUCED MOTION ---- */
 @media (prefers-reduced-motion: reduce) {
   #hero .hero__robot { animation: none !important; }
 }
