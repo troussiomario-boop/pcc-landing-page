@@ -44,9 +44,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 
-  <!-- Lucide Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.css">
-
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/assets/logo-pcc.png">
   <link rel="apple-touch-icon" href="/assets/logo-pcc.png">
@@ -72,9 +69,7 @@
       <p class="body-lg hero__subtitle">Rejoins le canal Telegram et branche le robot qui trade automatiquement sur l'or, du lundi au vendredi. Aucune compétence requise. 10 minutes pour démarrer.</p>
 
       <button class="cta-primary cta-telegram">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="1"/><path d="M5.64 5.64a9 9 0 0 1 12.72 0"/><path d="M2.64 8.64a13 13 0 0 1 18.72 0"/><path d="M8.64 2.64a17 17 0 0 1 6.72 0"/>
-        </svg>
+        <i data-lucide="send"></i>
         Rejoindre le canal Telegram
       </button>
 
@@ -91,7 +86,6 @@
           muted
           loop
           playsinline
-          poster="/assets/videos/introduction.jpg"
           controls>
           <source src="/assets/videos/introduction.mp4" type="video/mp4">
           Votre navigateur ne supporte pas les vidéos HTML5.
@@ -130,22 +124,22 @@
       <div class="vs-card vs-card--without">
         <h3 class="vs-card__heading">SANS PCC</h3>
         <ul class="vs-list">
-          <li><i class="lucide lucide-x-circle"></i> Tu trades seul, tu perds plus que tu gagnes, et personne pour t'aider quand tu cherches à comprendre</li>
-          <li><i class="lucide lucide-x-circle"></i> Tu passes tes soirées sur les graphiques pendant que ta vie défile</li>
-          <li><i class="lucide lucide-x-circle"></i> Tu as payé 1500-2500€ à un "gourou Instagram" qui t'a lâché au premier crash</li>
-          <li><i class="lucide lucide-x-circle"></i> Tu suis des signaux Telegram douteux qui te font perdre plus qu'ils ne te font gagner</li>
-          <li><i class="lucide lucide-x-circle"></i> Tu regardes ton salaire fondre sous l'inflation pendant que ton Livret A rapporte rien</li>
+          <li><i data-lucide="x-circle"></i> Tu trades seul, tu perds plus que tu gagnes, et personne pour t'aider quand tu cherches à comprendre</li>
+          <li><i data-lucide="x-circle"></i> Tu passes tes soirées sur les graphiques pendant que ta vie défile</li>
+          <li><i data-lucide="x-circle"></i> Tu as payé 1500-2500€ à un "gourou Instagram" qui t'a lâché au premier crash</li>
+          <li><i data-lucide="x-circle"></i> Tu suis des signaux Telegram douteux qui te font perdre plus qu'ils ne te font gagner</li>
+          <li><i data-lucide="x-circle"></i> Tu regardes ton salaire fondre sous l'inflation pendant que ton Livret A rapporte rien</li>
         </ul>
       </div>
 
       <div class="vs-card vs-card--with">
         <h3 class="vs-card__heading">AVEC PCC</h3>
         <ul class="vs-list">
-          <li><i class="lucide lucide-check-circle"></i> Un robot qui trade automatiquement sur l'or, 5 jours sur 7, pendant que tu vis ta vie</li>
-          <li><i class="lucide lucide-check-circle"></i> Tu démarres en 10 minutes, même si t'as jamais touché un trade de ta vie</li>
-          <li><i class="lucide lucide-check-circle"></i> 100% gratuit. On se rémunère uniquement quand tu gagnes (profit sharing 20%)</li>
-          <li><i class="lucide lucide-check-circle"></i> Ton argent reste sur ton compte broker, à ton nom, contrôle total à tout moment</li>
-          <li><i class="lucide lucide-check-circle"></i> Un canal Telegram actif avec Luc et Adrien qui répondent à tes questions tous les jours</li>
+          <li><i data-lucide="check-circle"></i> Un robot qui trade automatiquement sur l'or, 5 jours sur 7, pendant que tu vis ta vie</li>
+          <li><i data-lucide="check-circle"></i> Tu démarres en 10 minutes, même si t'as jamais touché un trade de ta vie</li>
+          <li><i data-lucide="check-circle"></i> 100% gratuit. On se rémunère uniquement quand tu gagnes (profit sharing 20%)</li>
+          <li><i data-lucide="check-circle"></i> Ton argent reste sur ton compte broker, à ton nom, contrôle total à tout moment</li>
+          <li><i data-lucide="check-circle"></i> Un canal Telegram actif avec Luc et Adrien qui répondent à tes questions tous les jours</li>
         </ul>
       </div>
     </div>
@@ -187,9 +181,7 @@
   <div class="container container--narrow">
     <p class="body-lg">Tu veux essayer ?</p>
     <button class="cta-primary cta-telegram cta-lg">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="1"/><path d="M5.64 5.64a9 9 0 0 1 12.72 0"/><path d="M2.64 8.64a13 13 0 0 1 18.72 0"/><path d="M8.64 2.64a17 17 0 0 1 6.72 0"/>
-      </svg>
+      <i data-lucide="send"></i>
       Rejoindre le canal Telegram — c'est gratuit
     </button>
     <p class="caption">Aucune carte bancaire demandée</p>
@@ -206,19 +198,19 @@
 
     <div class="why-grid">
       <div class="why-card">
-        <i class="lucide lucide-cpu why-card__icon"></i>
+        <i data-lucide="cpu" class="why-card__icon"></i>
         <h3 class="h-card">Automatisé</h3>
         <p class="body">Le robot trade tout seul sur l'or, du lundi au vendredi. Tu n'as rien à surveiller, rien à valider. Une fois branché, il tourne en arrière-plan pendant que tu vis ta vie.</p>
       </div>
 
       <div class="why-card">
-        <i class="lucide lucide-gift why-card__icon"></i>
+        <i data-lucide="gift" class="why-card__icon"></i>
         <h3 class="h-card">Vraiment gratuit</h3>
         <p class="body">On se rémunère par profit sharing : 20% sur tes gains. Si tu gagnes, on gagne. Si tu ne gagnes pas, on ne gagne pas. Aucun abonnement, aucune formation à acheter, aucun coaching. Jamais.</p>
       </div>
 
       <div class="why-card">
-        <i class="lucide lucide-lock why-card__icon"></i>
+        <i data-lucide="lock" class="why-card__icon"></i>
         <h3 class="h-card">Tu gardes le contrôle</h3>
         <p class="body">Ton argent reste sur ton compte broker, à ton nom. PCC ne touche jamais à tes fonds. Tu peux retirer, arrêter le robot, ou changer ta config à tout moment.</p>
       </div>
@@ -264,9 +256,7 @@
   <div class="container container--narrow">
     <p class="body-lg">Tu veux voir ces résultats en direct ?</p>
     <button class="cta-primary cta-telegram cta-lg">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="1"/><path d="M5.64 5.64a9 9 0 0 1 12.72 0"/><path d="M2.64 8.64a13 13 0 0 1 18.72 0"/><path d="M8.64 2.64a17 17 0 0 1 6.72 0"/>
-      </svg>
+      <i data-lucide="send"></i>
       Rejoindre le canal Telegram
     </button>
     <p class="caption">Tu accèdes au feed complet et aux lives de trading</p>
@@ -284,22 +274,22 @@
       <div class="for-who-card for-who-card--yes">
         <h3>C'est pour toi si :</h3>
         <ul class="for-who-list">
-          <li><i class="lucide lucide-check"></i> Tu as un Livret A ou un PEA qui rapporte rien et tu cherches une vraie alternative</li>
-          <li><i class="lucide lucide-check"></i> Tu en as marre des "experts" qui font payer des coachings à 2000€ pour rien</li>
-          <li><i class="lucide lucide-check"></i> Tu as déjà perdu en crypto ou en trading manuel et tu cherches une approche différente</li>
-          <li><i class="lucide lucide-check"></i> Tu veux un revenu complémentaire qui tourne sans toi pendant que tu bosses</li>
-          <li><i class="lucide lucide-check"></i> Tu cherches un système où c'est TOI qui contrôles ton argent, pas une boîte tierce</li>
+          <li><i data-lucide="check"></i> Tu as un Livret A ou un PEA qui rapporte rien et tu cherches une vraie alternative</li>
+          <li><i data-lucide="check"></i> Tu en as marre des "experts" qui font payer des coachings à 2000€ pour rien</li>
+          <li><i data-lucide="check"></i> Tu as déjà perdu en crypto ou en trading manuel et tu cherches une approche différente</li>
+          <li><i data-lucide="check"></i> Tu veux un revenu complémentaire qui tourne sans toi pendant que tu bosses</li>
+          <li><i data-lucide="check"></i> Tu cherches un système où c'est TOI qui contrôles ton argent, pas une boîte tierce</li>
         </ul>
       </div>
 
       <div class="for-who-card for-who-card--no">
         <h3>Ce n'est pas pour toi si :</h3>
         <ul class="for-who-list">
-          <li><i class="lucide lucide-x"></i> Tu cherches à doubler ton capital en quelques semaines</li>
-          <li><i class="lucide lucide-x"></i> Tu veux des gains garantis (aucun système ne peut promettre ça)</li>
-          <li><i class="lucide lucide-x"></i> Tu n'as pas au minimum 440€ que tu peux allouer au trading</li>
-          <li><i class="lucide lucide-x"></i> Tu veux apprendre à trader par toi-même</li>
-          <li><i class="lucide lucide-x"></i> Tu cherches un coaching gourou — ce n'est pas notre offre</li>
+          <li><i data-lucide="x"></i> Tu cherches à doubler ton capital en quelques semaines</li>
+          <li><i data-lucide="x"></i> Tu veux des gains garantis (aucun système ne peut promettre ça)</li>
+          <li><i data-lucide="x"></i> Tu n'as pas au minimum 440€ que tu peux allouer au trading</li>
+          <li><i data-lucide="x"></i> Tu veux apprendre à trader par toi-même</li>
+          <li><i data-lucide="x"></i> Tu cherches un coaching gourou — ce n'est pas notre offre</li>
         </ul>
       </div>
     </div>
@@ -374,9 +364,7 @@
   <div class="container container--narrow">
     <p class="body-lg">Convaincu ?</p>
     <button class="cta-primary cta-telegram cta-lg">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="1"/><path d="M5.64 5.64a9 9 0 0 1 12.72 0"/><path d="M2.64 8.64a13 13 0 0 1 18.72 0"/><path d="M8.64 2.64a17 17 0 0 1 6.72 0"/>
-      </svg>
+      <i data-lucide="send"></i>
       Rejoindre le canal Telegram
     </button>
     <p class="caption">Accès immédiat, gratuit, sans engagement</p>
@@ -391,12 +379,12 @@
     <h2 class="h-section">En rejoignant le canal, tu obtiens :</h2>
 
     <ul class="benefits-list">
-      <li><i class="lucide lucide-check"></i> Le lien pour brancher le robot PCC en 10 minutes</li>
-      <li><i class="lucide lucide-check"></i> L'accès à un canal Telegram actif avec 4700+ membres</li>
-      <li><i class="lucide lucide-check"></i> Les positions du robot partagées chaque jour, en transparence (gains et pertes)</li>
-      <li><i class="lucide lucide-check"></i> Les lives de trading où on montre le robot en train de trader en direct</li>
-      <li><i class="lucide lucide-check"></i> Un accès direct à notre équipe (Luc et Adrien) pour tes questions</li>
-      <li><i class="lucide lucide-check"></i> Aucun abonnement, jamais. Aucune carte bancaire demandée.</li>
+      <li><i data-lucide="check"></i> Le lien pour brancher le robot PCC en 10 minutes</li>
+      <li><i data-lucide="check"></i> L'accès à un canal Telegram actif avec 4700+ membres</li>
+      <li><i data-lucide="check"></i> Les positions du robot partagées chaque jour, en transparence (gains et pertes)</li>
+      <li><i data-lucide="check"></i> Les lives de trading où on montre le robot en train de trader en direct</li>
+      <li><i data-lucide="check"></i> Un accès direct à notre équipe (Luc et Adrien) pour tes questions</li>
+      <li><i data-lucide="check"></i> Aucun abonnement, jamais. Aucune carte bancaire demandée.</li>
     </ul>
   </div>
 </section>
@@ -409,9 +397,7 @@
     <h2 class="h-section">Prêt à brancher le robot ?</h2>
     <p class="body-lg">Accès immédiat au canal Telegram. Gratuit. Sans engagement.</p>
     <button class="cta-primary cta-telegram cta-xl">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="1"/><path d="M5.64 5.64a9 9 0 0 1 12.72 0"/><path d="M2.64 8.64a13 13 0 0 1 18.72 0"/><path d="M8.64 2.64a17 17 0 0 1 6.72 0"/>
-      </svg>
+      <i data-lucide="send"></i>
       Rejoindre le canal Telegram
     </button>
     <p class="caption">Tu pourras désactiver à tout moment</p>
@@ -439,7 +425,7 @@
       <div class="footer-col footer-social">
         <p class="caption">Suivez-nous :</p>
         <a href="https://www.tiktok.com/@playcomedyclub" target="_blank" rel="noopener noreferrer" class="caption">
-          <i class="lucide lucide-music"></i> @playcomedyclub
+          <i data-lucide="music"></i> @playcomedyclub
         </a>
       </div>
     </div>
@@ -452,5 +438,7 @@
 
 <script src="script.js" defer></script>
 <script src="script-premium.js" defer></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
 </body>
 </html>
