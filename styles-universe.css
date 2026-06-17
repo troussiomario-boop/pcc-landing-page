@@ -86,3 +86,73 @@ body::before { display: none !important; }
 }
 @media (max-width:400px){ #stats .stats-grid{grid-template-columns:1fr !important;} }
 @media (prefers-reduced-motion: reduce){ #why::after, #benefits::after { animation:none !important; } }
+
+/* ===== SCARCITY BAR — redesign sans traits (point live qui pulse) ===== */
+.scarcity-bar {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(0,194,255,0.10), transparent 60%),
+    linear-gradient(180deg, #102444 0%, #0C1B33 100%) !important;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  padding: 22px 24px !important;
+  position: relative;
+  backdrop-filter: blur(12px) !important;
+}
+.scarcity-bar::before { display: none !important; }
+
+.scarcity-container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 24px !important;
+}
+
+.scarcity-text { font-size: 17px !important; color: #c9d6e8 !important; margin: 0 !important; }
+.scarcity-text strong { color: #00C2FF !important; font-weight: 700 !important; }
+
+.counter-badge {
+  position: relative !important;
+  flex-direction: row !important;
+  align-items: baseline !important;
+  gap: 9px !important;
+  background: rgba(13,27,48,0.72) !important;
+  border: 1px solid rgba(255,215,0,0.35) !important;
+  border-radius: 14px !important;
+  padding: 12px 22px 12px 38px !important;
+  min-width: 0 !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.35), 0 0 24px rgba(255,215,0,0.12) !important;
+  filter: none !important;
+}
+.counter-badge::before {
+  content: '';
+  position: absolute;
+  left: 16px; top: 50%; transform: translateY(-50%);
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #ff4d4d;
+  box-shadow: 0 0 0 0 rgba(255,77,77,0.6);
+  animation: pcc-live-pulse 1.6s ease-out infinite;
+}
+@keyframes pcc-live-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255,77,77,0.6); }
+  70%  { box-shadow: 0 0 0 10px rgba(255,77,77,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,77,77,0); }
+}
+.counter-number {
+  font-size: 30px !important; font-weight: 800 !important;
+  color: #FFD700 !important; line-height: 1 !important;
+  text-shadow: 0 0 18px rgba(255,215,0,0.4) !important;
+}
+.counter-label {
+  font-size: 12px !important; font-weight: 600 !important;
+  text-transform: uppercase !important; letter-spacing: 0.06em !important;
+  color: rgba(255,215,0,0.85) !important;
+}
+
+@media (max-width: 640px) {
+  .scarcity-container { flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 14px !important; }
+  .scarcity-text { text-align: center !important; }
+}
+@media (prefers-reduced-motion: reduce) { .counter-badge::before { animation: none !important; } }
