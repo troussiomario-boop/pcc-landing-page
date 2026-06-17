@@ -1,0 +1,465 @@
+/* ============================================================================
+   PCC LANDING PAGE — VISUAL UNIVERSE
+   Backgrounds, Mascotte Robot, Hero Layout Fix, Mobile Responsive
+   À inclure APRÈS styles-premium.css dans index.html
+   ============================================================================ */
+
+/* ============================================================================
+   HERO — LAYOUT FIX + BACKGROUNDS
+   ============================================================================ */
+
+.hero {
+  background-image: url('/assets/bg-ai-network.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(10, 22, 40, 0.92), rgba(10, 22, 40, 0.78));
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile first — 1 colonne */
+.hero .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.hero__content {
+  text-align: center;
+  order: 1;
+}
+
+.hero__visuals {
+  order: 2;
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+}
+
+.hero__video {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 85vw;
+  margin: 0 auto;
+}
+
+.hero::before {
+  background: linear-gradient(135deg, rgba(10, 22, 40, 0.92), rgba(10, 22, 40, 0.92));
+}
+
+/* Desktop: 2 colonnes */
+@media (min-width: 1024px) {
+  .hero .container {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    padding: 0 var(--space-5);
+  }
+
+  .hero__content {
+    text-align: left;
+    max-width: 560px;
+    order: unset;
+  }
+
+  .hero__visuals {
+    order: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+  }
+
+  .hero__video {
+    width: 100%;
+    max-width: 360px;
+    margin: unset;
+  }
+
+  .hero::before {
+    background: linear-gradient(135deg, rgba(10, 22, 40, 0.92), rgba(10, 22, 40, 0.78));
+  }
+}
+
+/* Robot mascotte dans le hero */
+.hero__robot {
+  position: absolute;
+  width: 120px;
+  height: auto;
+  animation: float-subtle 4s ease-in-out infinite;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+}
+
+@media (max-width: 768px) {
+  .hero__robot {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero__robot {
+    bottom: -40px;
+    left: 20px;
+    width: 140px;
+  }
+}
+
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+/* ============================================================================
+   SECTION VS COMPARATIVE — BACKGROUND
+   ============================================================================ */
+
+.vs-comparative {
+  background-image: url('/assets/bg-trading.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  position: relative;
+}
+
+.vs-comparative::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 22, 40, 0.85);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.vs-comparative > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================================
+   SECTION STATS — DARK (pas de background image)
+   ============================================================================ */
+
+.stats {
+  background: var(--color-bg-primary);
+  position: relative;
+}
+
+/* ============================================================================
+   SECTION WHY (3 principes) — BACKGROUND
+   ============================================================================ */
+
+.why {
+  background-image: url('/assets/bg-ai-network.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  position: relative;
+}
+
+.why::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 22, 40, 0.85);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.why > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================================
+   SECTION TESTIMONIALS — DARK (pas de background)
+   ============================================================================ */
+
+.testimonials {
+  background: var(--color-bg-primary);
+  position: relative;
+}
+
+/* ============================================================================
+   SECTION FOR-WHO — BACKGROUND
+   ============================================================================ */
+
+.for-who {
+  background-image: url('/assets/bg-gold.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  position: relative;
+}
+
+.for-who::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 22, 40, 0.88);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.for-who > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================================
+   SECTION WHO-BEHIND — BACKGROUND
+   ============================================================================ */
+
+.who-behind {
+  background-image: url('/assets/bg-gold.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  position: relative;
+}
+
+.who-behind::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 22, 40, 0.82);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.who-behind > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================================
+   SECTION FINAL-CTA — BACKGROUND DRAMATIQUE
+   ============================================================================ */
+
+.final-cta {
+  background-image: url('/assets/bg-trading.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  position: relative;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 22, 40, 0.80);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.final-cta > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================================
+   TRANSITION MIST (optionnel — entre sections majeurs)
+   ============================================================================ */
+
+.mist-transition {
+  height: 120px;
+  background-image: url('/assets/bg-mist.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  opacity: 0.5;
+  mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .mist-transition {
+    height: 60px;
+  }
+}
+
+/* ============================================================================
+   MOBILE RESPONSIVITÉ (< 768px)
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .h-hero {
+    font-size: clamp(28px, 7vw, 40px) !important;
+    line-height: 1.1;
+  }
+
+  .hero__subtitle {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  /* Assure que rien ne déborde horizontalement */
+  .container {
+    padding: 0 16px !important;
+  }
+
+  /* Grids: 1 colonne sur mobile */
+  .vs-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-5) !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-4) !important;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-5) !important;
+  }
+
+  .for-who-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-5) !important;
+  }
+
+  .who-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-6) !important;
+  }
+
+  /* Carousel mobile */
+  .testimonials-carousel {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  .testimonials-grid {
+    display: flex !important;
+    gap: var(--space-4);
+  }
+
+  .testimonial-card {
+    flex: 0 0 calc(100vw - 32px);
+    scroll-snap-align: center;
+  }
+
+  /* Backgrounds plus opaques sur mobile pour lisibilité */
+  .vs-comparative::before {
+    background: rgba(10, 22, 40, 0.90);
+  }
+
+  .why::before {
+    background: rgba(10, 22, 40, 0.90);
+  }
+
+  .for-who::before {
+    background: rgba(10, 22, 40, 0.92);
+  }
+
+  .who-behind::before {
+    background: rgba(10, 22, 40, 0.90);
+  }
+
+  .final-cta::before {
+    background: rgba(10, 22, 40, 0.85);
+  }
+
+  /* Buttons minimum size */
+  .cta-primary, button {
+    min-height: 48px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cta-intermediate .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .cta-intermediate button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Lifestyle gallery responsive */
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-4) !important;
+  }
+
+  /* Who section text responsive */
+  .who-text {
+    margin-bottom: var(--space-6);
+  }
+
+  .who-tiktoks {
+    width: 100%;
+  }
+}
+
+/* ============================================================================
+   ZÉRO SCROLL HORIZONTAL
+   ============================================================================ */
+
+body, html {
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ensure buttons don't overflow */
+.cta-primary, button {
+  max-width: 100%;
+}
