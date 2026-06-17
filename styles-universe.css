@@ -1,465 +1,225 @@
 /* ============================================================================
-   PCC LANDING PAGE — VISUAL UNIVERSE
-   Backgrounds, Mascotte Robot, Hero Layout Fix, Mobile Responsive
-   À inclure APRÈS styles-premium.css dans index.html
+   PCC LANDING PAGE — VISUAL UNIVERSE (v2)
+   Hero BLINDE (force toutes les contraintes) + backgrounds coherents + mobile.
+   Charge en dernier. Selecteurs par ID + !important pour gagner a coup sur.
    ============================================================================ */
 
-/* ============================================================================
-   HERO — LAYOUT FIX + BACKGROUNDS
-   ============================================================================ */
+/* ---------------------------------------------------------------------------
+   0. SAFETY
+   --------------------------------------------------------------------------- */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100%;
+}
+img { max-width: 100%; }
 
-.hero {
-  background-image: url('/assets/bg-ai-network.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: scroll;
+/* ===========================================================================
+   1. HERO — LAYOUT BLINDE
+   =========================================================================== */
+#hero {
   position: relative;
+  overflow: hidden;
+  background-color: #0A1628 !important;
+  background-image:
+    linear-gradient(135deg, rgba(10, 22, 40, 0.86) 0%, rgba(10, 22, 40, 0.74) 100%),
+    url('/assets/bg-ai-network.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(10, 22, 40, 0.92), rgba(10, 22, 40, 0.78));
-  z-index: 0;
-  pointer-events: none;
+#hero .container {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr) !important;
+  gap: 44px !important;
+  align-items: center !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
 }
 
-.hero > * {
-  position: relative;
-  z-index: 1;
+#hero .hero__content {
+  text-align: left !important;
+  max-width: 100% !important;
+  width: auto !important;
+  min-width: 0 !important;
+  flex: initial !important;
 }
 
-/* Mobile first — 1 colonne */
-.hero .container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-4);
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-6);
-  align-items: center;
+#hero .h-hero {
+  max-width: none !important;
+  width: auto !important;
+  font-size: clamp(30px, 4.2vw, 52px) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 20px !important;
 }
 
-.hero__content {
-  text-align: center;
-  order: 1;
+#hero .hero__subtitle {
+  max-width: 540px !important;
+  margin-bottom: 28px !important;
 }
 
-.hero__visuals {
-  order: 2;
-  display: block;
-  width: 100%;
-  max-width: none;
-  margin: 0 auto;
+#hero .hero__visuals {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  max-width: 100% !important;
+  width: auto !important;
+  min-width: 0 !important;
+  flex: initial !important;
 }
 
-.hero__video {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 85vw;
-  margin: 0 auto;
+#hero .hero__video {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 340px !important;
 }
 
-.hero::before {
-  background: linear-gradient(135deg, rgba(10, 22, 40, 0.92), rgba(10, 22, 40, 0.92));
+#hero .hero__video-element {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  border-radius: 24px !important;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(0, 194, 255, 0.18) !important;
 }
 
-/* Desktop: 2 colonnes */
-@media (min-width: 1024px) {
-  .hero .container {
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(40px, 6vw, 80px);
-    padding: 0 var(--space-5);
-  }
-
-  .hero__content {
-    text-align: left;
-    max-width: 560px;
-    order: unset;
-  }
-
-  .hero__visuals {
-    order: unset;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-  }
-
-  .hero__video {
-    width: 100%;
-    max-width: 360px;
-    margin: unset;
-  }
-
-  .hero::before {
-    background: linear-gradient(135deg, rgba(10, 22, 40, 0.92), rgba(10, 22, 40, 0.78));
-  }
+#hero .hero__robot {
+  position: absolute !important;
+  bottom: -24px !important;
+  left: -54px !important;
+  width: 128px !important;
+  height: auto !important;
+  z-index: 4 !important;
+  pointer-events: none !important;
+  filter: drop-shadow(0 12px 28px rgba(0, 194, 255, 0.35));
+  animation: pcc-robot-float 4s ease-in-out infinite;
 }
 
-/* Robot mascotte dans le hero */
-.hero__robot {
-  position: absolute;
-  width: 120px;
-  height: auto;
-  animation: float-subtle 4s ease-in-out infinite;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+@keyframes pcc-robot-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
 }
 
+/* ===========================================================================
+   2. SECTION BACKGROUNDS — COHERENTS
+   =========================================================================== */
+#vs {
+  background-color: #0A1628 !important;
+  background-image:
+    linear-gradient(rgba(10, 22, 40, 0.90), rgba(10, 22, 40, 0.92)),
+    url('/assets/bg-trading.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+#why {
+  background-color: #0A1628 !important;
+  background-image:
+    linear-gradient(rgba(10, 22, 40, 0.90), rgba(10, 22, 40, 0.92)),
+    url('/assets/bg-ai-network.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+#for-who {
+  background-color: #0A1628 !important;
+  background-image:
+    linear-gradient(rgba(10, 22, 40, 0.90), rgba(10, 22, 40, 0.93)),
+    url('/assets/bg-trading.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+#final-cta {
+  background-color: #0A1628 !important;
+  background-image:
+    linear-gradient(rgba(10, 22, 40, 0.74), rgba(10, 22, 40, 0.84)),
+    url('/assets/bg-gold.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* #stats, #testimonials, #who : pas d'image -> restent dark (lisibilite) */
+
+/* ===========================================================================
+   3. TABLET (<=1024px)
+   =========================================================================== */
+@media (max-width: 1024px) {
+  #hero .container { gap: 32px !important; }
+  #hero .hero__robot { width: 108px !important; left: -38px !important; }
+}
+
+/* ===========================================================================
+   4. MOBILE (<=768px)
+   =========================================================================== */
 @media (max-width: 768px) {
-  .hero__robot {
-    display: none;
-  }
-}
 
-@media (min-width: 1024px) {
-  .hero__robot {
-    bottom: -40px;
-    left: 20px;
-    width: 140px;
-  }
-}
-
-@keyframes float-subtle {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-}
-
-/* ============================================================================
-   SECTION VS COMPARATIVE — BACKGROUND
-   ============================================================================ */
-
-.vs-comparative {
-  background-image: url('/assets/bg-trading.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: scroll;
-  position: relative;
-}
-
-.vs-comparative::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(10, 22, 40, 0.85);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.vs-comparative > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* ============================================================================
-   SECTION STATS — DARK (pas de background image)
-   ============================================================================ */
-
-.stats {
-  background: var(--color-bg-primary);
-  position: relative;
-}
-
-/* ============================================================================
-   SECTION WHY (3 principes) — BACKGROUND
-   ============================================================================ */
-
-.why {
-  background-image: url('/assets/bg-ai-network.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: scroll;
-  position: relative;
-}
-
-.why::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(10, 22, 40, 0.85);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.why > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* ============================================================================
-   SECTION TESTIMONIALS — DARK (pas de background)
-   ============================================================================ */
-
-.testimonials {
-  background: var(--color-bg-primary);
-  position: relative;
-}
-
-/* ============================================================================
-   SECTION FOR-WHO — BACKGROUND
-   ============================================================================ */
-
-.for-who {
-  background-image: url('/assets/bg-gold.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: scroll;
-  position: relative;
-}
-
-.for-who::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(10, 22, 40, 0.88);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.for-who > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* ============================================================================
-   SECTION WHO-BEHIND — BACKGROUND
-   ============================================================================ */
-
-.who-behind {
-  background-image: url('/assets/bg-gold.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: scroll;
-  position: relative;
-}
-
-.who-behind::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(10, 22, 40, 0.82);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.who-behind > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* ============================================================================
-   SECTION FINAL-CTA — BACKGROUND DRAMATIQUE
-   ============================================================================ */
-
-.final-cta {
-  background-image: url('/assets/bg-trading.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: scroll;
-  position: relative;
-}
-
-.final-cta::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(10, 22, 40, 0.80);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.final-cta > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* ============================================================================
-   TRANSITION MIST (optionnel — entre sections majeurs)
-   ============================================================================ */
-
-.mist-transition {
-  height: 120px;
-  background-image: url('/assets/bg-mist.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: scroll;
-  opacity: 0.5;
-  mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
-  pointer-events: none;
-}
-
-@media (max-width: 768px) {
-  .mist-transition {
-    height: 60px;
-  }
-}
-
-/* ============================================================================
-   MOBILE RESPONSIVITÉ (< 768px)
-   ============================================================================ */
-
-@media (max-width: 768px) {
-  body {
-    overflow-x: hidden;
-  }
-
-  .hero {
-    min-height: auto;
-  }
-
-  .h-hero {
-    font-size: clamp(28px, 7vw, 40px) !important;
-    line-height: 1.1;
-  }
-
-  .hero__subtitle {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  /* Assure que rien ne déborde horizontalement */
-  .container {
-    padding: 0 16px !important;
-  }
-
-  /* Grids: 1 colonne sur mobile */
-  .vs-grid {
+  #hero .container {
     grid-template-columns: 1fr !important;
-    gap: var(--space-5) !important;
+    gap: 26px !important;
+    text-align: center !important;
+  }
+  #hero .hero__content { text-align: center !important; }
+  #hero .h-hero { font-size: clamp(26px, 7vw, 36px) !important; }
+  #hero .hero__subtitle { margin-left: auto !important; margin-right: auto !important; }
+  #hero .hero__video { max-width: 280px !important; margin: 0 auto !important; }
+  #hero .hero__robot { width: 72px !important; left: -6px !important; bottom: -10px !important; }
+
+  #hero, #vs, #why, #for-who, #final-cta {
+    background-attachment: scroll !important;
   }
 
-  .stats-grid {
+  #vs .vs-grid,
+  #why .why-grid,
+  #for-who .for-who-grid,
+  #who .who-grid {
+    display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: var(--space-4) !important;
+    gap: 20px !important;
   }
 
-  .why-grid {
-    grid-template-columns: 1fr !important;
-    gap: var(--space-5) !important;
+  #stats .stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px !important;
   }
 
-  .for-who-grid {
-    grid-template-columns: 1fr !important;
-    gap: var(--space-5) !important;
-  }
-
-  .who-grid {
-    grid-template-columns: 1fr !important;
-    gap: var(--space-6) !important;
-  }
-
-  /* Carousel mobile */
-  .testimonials-carousel {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-  }
-
-  .testimonials-grid {
+  #testimonials .testimonials-grid {
     display: flex !important;
-    gap: var(--space-4);
+    overflow-x: auto !important;
+    gap: 16px !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 12px;
   }
-
-  .testimonial-card {
-    flex: 0 0 calc(100vw - 32px);
+  #testimonials .testimonial-card {
+    flex: 0 0 78% !important;
     scroll-snap-align: center;
   }
 
-  /* Backgrounds plus opaques sur mobile pour lisibilité */
-  .vs-comparative::before {
-    background: rgba(10, 22, 40, 0.90);
-  }
-
-  .why::before {
-    background: rgba(10, 22, 40, 0.90);
-  }
-
-  .for-who::before {
-    background: rgba(10, 22, 40, 0.92);
-  }
-
-  .who-behind::before {
-    background: rgba(10, 22, 40, 0.90);
-  }
-
-  .final-cta::before {
-    background: rgba(10, 22, 40, 0.85);
-  }
-
-  /* Buttons minimum size */
-  .cta-primary, button {
-    min-height: 48px;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .cta-intermediate .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-4);
-  }
-
-  .cta-intermediate button {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  /* Lifestyle gallery responsive */
-  .gallery-grid {
-    grid-template-columns: 1fr !important;
-    gap: var(--space-4) !important;
-  }
-
-  /* Who section text responsive */
-  .who-text {
-    margin-bottom: var(--space-6);
-  }
-
-  .who-tiktoks {
-    width: 100%;
+  #who .gallery-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
   }
 }
 
-/* ============================================================================
-   ZÉRO SCROLL HORIZONTAL
-   ============================================================================ */
-
-body, html {
-  overflow-x: hidden;
+/* ===========================================================================
+   5. PETIT MOBILE (<=400px)
+   =========================================================================== */
+@media (max-width: 400px) {
+  #stats .stats-grid { grid-template-columns: 1fr !important; }
+  #hero .hero__robot { width: 62px !important; }
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Ensure buttons don't overflow */
-.cta-primary, button {
-  max-width: 100%;
+/* ===========================================================================
+   6. REDUCED MOTION
+   =========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  #hero .hero__robot { animation: none !important; }
 }
