@@ -62,48 +62,6 @@ function setupSmoothScroll() {
 }
 
 // ============================================================
-// FAQ ACCORDION
-// ============================================================
-
-function setupFaqAccordion() {
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach((item) => {
-    const trigger = item.querySelector('.faq-trigger');
-    const content = item.querySelector('.faq-content');
-
-    if (!trigger || !content) return;
-
-    // Set initial max-height to 0
-    content.style.maxHeight = '0px';
-
-    trigger.addEventListener('click', () => {
-      const isOpen = item.classList.contains('is-open');
-
-      // Close all other items
-      faqItems.forEach((otherItem) => {
-        if (otherItem !== item && otherItem.classList.contains('is-open')) {
-          otherItem.classList.remove('is-open');
-          const otherContent = otherItem.querySelector('.faq-content');
-          if (otherContent) {
-            otherContent.style.maxHeight = '0px';
-          }
-        }
-      });
-
-      // Toggle current item
-      if (isOpen) {
-        item.classList.remove('is-open');
-        content.style.maxHeight = '0px';
-      } else {
-        item.classList.add('is-open');
-        content.style.maxHeight = content.scrollHeight + 'px';
-      }
-    });
-  });
-}
-
-// ============================================================
 // MOBILE TESTIMONIALS CAROUSEL
 // ============================================================
 
@@ -186,7 +144,6 @@ function setupLazyLoading() {
 function init() {
   setupCtaTracking();
   setupSmoothScroll();
-  setupFaqAccordion();
   setupTestimonialsCarousel();
   setupHeroCarouselMobile();
   replaceLucideIcons();
