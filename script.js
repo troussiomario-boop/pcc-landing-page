@@ -157,12 +157,9 @@ if (document.readyState === 'loading') {
   init();
 }
 
-// Force TikTok SDK to render embeds on page load
+// Re-init lucide icons after TikTok embed loads (in case DOM changed)
 window.addEventListener('load', () => {
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
-  }
-  if (typeof tiktok !== 'undefined' && tiktok.embed && tiktok.embed.lib && tiktok.embed.lib.render) {
-    tiktok.embed.lib.render(document.body);
   }
 });

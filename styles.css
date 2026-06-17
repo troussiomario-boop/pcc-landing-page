@@ -289,18 +289,29 @@ button {
   }
 }
 
-.hero__video {
+.hero__carousel {
   display: flex;
+  gap: var(--space-4);
   justify-content: center;
-  align-items: center;
-  animation: fadeInUp 0.8s ease-out 0.4s both;
-  width: 100%;
 }
 
-.hero__video .tiktok-embed {
-  width: 100%;
-  max-width: 605px;
-  min-width: 325px;
+.hero__carousel-img {
+  width: 140px;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: rotate(-3deg);
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.hero__carousel-img:nth-child(2) {
+  transform: rotate(2deg);
+  animation-delay: 0.5s;
+}
+
+.hero__carousel-img:nth-child(3) {
+  transform: rotate(-1deg);
+  animation-delay: 0.6s;
 }
 
 @keyframes fadeInDown {
