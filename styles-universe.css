@@ -227,3 +227,35 @@ body::before { display: none !important; }
 }
 #why .why-card:hover { transform: translateY(-4px) !important; }
 #why .why-card__icon { margin-bottom: 14px !important; }
+
+/* ===== WHO — 1 colonne (bio puis visuels) pour éliminer le vide à droite ===== */
+#who .who-grid {
+  grid-template-columns: 1fr !important;
+  max-width: 820px !important;
+  margin: 40px auto 0 !important;
+  gap: 44px !important;
+}
+#who .who-tiktoks { gap: 28px !important; }
+#who .lifestyle-gallery { margin-bottom: 0 !important; }
+
+#who .tiktok-embeds {
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 18px !important;
+}
+
+#who .tiktok-badge {
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 14px 24px !important;
+  max-width: 600px !important;
+  margin: 8px auto 0 !important;
+}
+
+@media (max-width: 768px) {
+  #who .tiktok-embeds { flex-direction: column !important; align-items: center !important; }
+  #who .tiktok-badge { flex-direction: column !important; }
+}
