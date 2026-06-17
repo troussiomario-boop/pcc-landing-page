@@ -28,7 +28,9 @@ function setupScarcityCounter() {
     if (current > 15) {
       current = Math.max(15, current - Math.floor(Math.random() * 3 + 1));
       counterEl.textContent = current;
-      counterEl.style.animation = 'pulse 0.3s ease-out';
+      counterEl.style.animation = 'none';
+      counterEl.offsetHeight; // Trigger reflow
+      counterEl.style.animation = 'scarcity-pulse 0.3s ease-out';
       setTimeout(() => {
         counterEl.style.animation = '';
       }, 300);
