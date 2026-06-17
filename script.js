@@ -14,6 +14,43 @@ function generateEventId() {
 }
 
 // ============================================================
+// SCARCITY COUNTER
+// ============================================================
+
+function setupScarcityCounter() {
+  const counterEl = document.getElementById('scarcity-counter');
+  if (!counterEl) return;
+
+  let current = parseInt(counterEl.textContent) || 47;
+
+  // Decrease counter every 15-30 seconds (simulating someone joining)
+  setInterval(() => {
+    if (current > 15) {
+      current = Math.max(15, current - Math.floor(Math.random() * 3 + 1));
+      counterEl.textContent = current;
+      counterEl.style.animation = 'pulse 0.3s ease-out';
+      setTimeout(() => {
+        counterEl.style.animation = '';
+      }, 300);
+    }
+  }, Math.random() * 15000 + 15000);
+
+  // Decrease counter when CTA is clicked
+  document.querySelectorAll('.cta-telegram').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (current > 15) {
+        current = Math.max(15, current - 1);
+        counterEl.textContent = current;
+        counterEl.parentElement.style.animation = 'scarcity-pulse 0.5s ease-out';
+        setTimeout(() => {
+          counterEl.parentElement.style.animation = '';
+        }, 500);
+      }
+    });
+  });
+}
+
+// ============================================================
 // META PIXEL — LEAD EVENT TRACKING
 // ============================================================
 
@@ -142,6 +179,7 @@ function setupLazyLoading() {
 // ============================================================
 
 function init() {
+  setupScarcityCounter();
   setupCtaTracking();
   setupSmoothScroll();
   setupTestimonialsCarousel();
