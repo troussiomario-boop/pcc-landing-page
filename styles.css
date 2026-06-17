@@ -292,11 +292,15 @@ button {
 .hero__video {
   display: flex;
   justify-content: center;
+  align-items: center;
   animation: fadeInUp 0.8s ease-out 0.4s both;
+  width: 100%;
 }
 
 .hero__video .tiktok-embed {
-  max-width: 100% !important;
+  width: 100%;
+  max-width: 605px;
+  min-width: 325px;
 }
 
 @keyframes fadeInDown {
