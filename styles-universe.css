@@ -409,3 +409,17 @@ body::before { display: none !important; }
     scroll-snap-align: center !important;
   }
 }
+
+/* Témoignages — cartes uniformes, ancrées en haut (Net Profit visible) */
+#testimonials .testimonial-img {
+  width: 100% !important;
+  height: 440px !important;
+  object-fit: cover !important;
+  object-position: top center !important;
+  border-radius: 14px !important;
+  display: block !important;
+  background: #0d1b30 !important;
+}
+@media (max-width: 768px) {
+  #testimonials .testimonial-img { height: 420px !important; }
+}
