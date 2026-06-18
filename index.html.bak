@@ -221,34 +221,20 @@ fbq('track', 'PageView');
     <div class="testimonials-carousel">
       <div class="testimonials-grid">
         <div class="testimonial-card">
-          <img src="/assets/testimonials/testimonial-4.jpeg" alt="Résultat partagé par la communauté" class="testimonial-img">
+          <img src="/assets/testimonials/testimonial-1.jpg" alt="Melle Sissou" class="testimonial-img">
+          <p class="caption testimonial-caption">Melle Sissou · Net Profit $365</p>
         </div>
         <div class="testimonial-card">
-          <img src="/assets/testimonials/testimonial-5.jpeg" alt="Résultat partagé par la communauté" class="testimonial-img">
+          <img src="/assets/testimonials/testimonial-2.jpg" alt="Laurent Rob" class="testimonial-img">
+          <p class="caption testimonial-caption">Laurent Rob · +13% en 9 jours · Net Profit $239</p>
         </div>
         <div class="testimonial-card">
-          <img src="/assets/testimonials/testimonial-6.jpeg" alt="Résultat partagé par la communauté" class="testimonial-img">
+          <img src="/assets/testimonials/testimonial-3.jpg" alt="Jean Luc" class="testimonial-img">
+          <p class="caption testimonial-caption">Jean Luc · Net Profit $515</p>
         </div>
         <div class="testimonial-card">
-          <img src="/assets/testimonials/testimonial-7.jpeg" alt="Résultat partagé par la communauté" class="testimonial-img">
-        </div>
-        <div class="testimonial-card">
-          <img src="/assets/testimonials/testimonial-8.jpeg" alt="Résultat partagé par la communauté" class="testimonial-img">
-        </div>
-        <div class="testimonial-card">
-          <img src="/assets/testimonials/testimonial-9.jpeg" alt="Résultat partagé par la communauté" class="testimonial-img">
-        </div>
-        <div class="testimonial-card">
-          <img src="/assets/testimonials/testimonial-10.jpeg" alt="Résultat partagé par la communauté" class="testimonial-img">
-        </div>
-        <div class="testimonial-card">
-          <img src="/assets/testimonials/testimonial-11.jpeg" alt="Résultat partagé par la communauté" class="testimonial-img">
-        </div>
-        <div class="testimonial-card">
-          <img src="/assets/testimonials/testimonial-12.jpeg" alt="Résultat partagé par la communauté" class="testimonial-img">
-        </div>
-        <div class="testimonial-card">
-          <img src="/assets/testimonials/testimonial-13.jpeg" alt="Résultat partagé par la communauté" class="testimonial-img">
+          <img src="/assets/testimonials/testimonial-4.jpg" alt="Iron 20230" class="testimonial-img">
+          <p class="caption testimonial-caption">Iron 20230 · Net Profit $593</p>
         </div>
       </div>
     </div>
