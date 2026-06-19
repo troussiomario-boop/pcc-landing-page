@@ -3,7 +3,7 @@
    ============================================================ */
 
 // Configuration centralisée
-const TG_LINK = 'https://t.me/+GI6hoThpldJjZWI0';
+const TG_LINK = 'https://t.me/+w3-dwvNJCntlZDc8';
 
 // ============================================================
 // UTILITY FUNCTIONS
